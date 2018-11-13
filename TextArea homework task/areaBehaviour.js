@@ -6,11 +6,24 @@ function areaControl () {
   let maxRows = 10;
 
   function updateVariables () {
-    let tempMinRows = Number(document.getElementById('minimum').value);
-    let tempMaxRows = Number(document.getElementById('maximum').value);
+    let minimumInput = document.getElementById('minimum');
+    let maximumInput = document.getElementById('maximum');
+    let tempMinRows = Number(minimumInput.value);
+    let tempMaxRows = Number(maximumInput.value);
     if (tempMaxRows < tempMinRows || tempMinRows < 1 || tempMaxRows === tempMinRows) {
-      window.alert('Incorrect parameters were passed. Make sure the values are positive');
-    } else {
+      showMessage('Error, incorrect parameters were passed. Make sure the inputs are positive and Minimum < Maximum');
+      minimumInput.value = minRows;
+      maximumInput.value = maxRows;
+    }
+    else if (tempMinRows % 1 != 0 || tempMaxRows % 1 != 0) {
+      showMessage('Error, incorrect parameters were passed. Make sure the values are full numbers');
+      minRows = Math.round(tempMinRows);
+      maxRows = Math.round(tempMaxRows);
+      minimumInput.value = minRows;
+      maximumInput.value = maxRows;
+      updateArea();
+    } 
+    else {
       minRows = tempMinRows;
       maxRows = tempMaxRows;
       updateArea();
@@ -41,5 +54,13 @@ function areaControl () {
       textArea.rows = maxRows;
     }
   }
+
+  function showMessage(text) {
+    let message = document.getElementById("message");
+    message.innerHTML = text;
+    message.className = "show";
+    setTimeout(function(){ message.className = message.className.replace("show", ""); }, 3000);
+  }
+
   updateVariables();
 }

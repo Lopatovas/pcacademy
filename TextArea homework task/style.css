@@ -60,3 +60,41 @@ textarea[name=myArea] {
     margin-top: 30px;
     font-family: Arial, Helvetica, sans-serif;
 }
+
+#message {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    background-color: #FFA500; /* Black background color */
+    color: white; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 2px; /* Rounded borders */
+    padding: 12px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    right: 10px;
+    bottom: 30px;
+}
+
+#message.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+   animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
