@@ -40,6 +40,7 @@ textarea::-webkit-scrollbar-thumb {
 
 textarea[name=myArea] {
     box-sizing: border-box;
+    overflow:auto;
     border: 2px solid #FFA500;
     border-radius: 1px;
     background-color: #f8f8f8;
