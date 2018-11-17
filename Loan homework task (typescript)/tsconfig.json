@@ -1,8 +1,6 @@
 {
     "compilerOptions": {
-        "module": "commonjs",
-        "outDir": "./build",
-        "watch": true
+        "module": "commonjs"
     },
     "exclude": [
         "node_modules"

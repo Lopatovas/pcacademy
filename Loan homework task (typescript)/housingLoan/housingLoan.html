@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="./housingLoan.ts"></script>
+        <link rel="stylesheet" href="./housingLoan.css">
+        <title>Housing Loan</title>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label>Monthly salary:</label>
+                <br>
+                <input type="number" min="0">
+            </div>
+            <div>
+                <label>Amount of children:</label>
+                <br>
+                <input type="number" min="0">
+            </div>
+            <div>
+                <label for="Loan amount">Loan amount:</label>
+                <br>
+                <input type="range" name="Loan amount" min="1" value="1">
+                <input type="number" min="1">
+            </div>
+            <div>
+                <label for="Loan time">Loan time:</label>
+                <br>
+                <input type="range" name="Loan time" min="1" max="360" value="1">
+                <input type="number">
+            </div>
+            <button>Count rates</button>
+        </form>
+    </body>
+</html>

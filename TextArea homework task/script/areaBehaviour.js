@@ -2,6 +2,7 @@
 function areaControl () {
   let minRows = 5;
   let maxRows = 10;
+  let textArea = document.getElementById('myAreaId');
 
   function updateMinMaxRows () {
     let minimumInput = document.getElementById('minimum');
@@ -27,7 +28,6 @@ function areaControl () {
   }
 
   function updateArea () {
-    let textArea = document.getElementById('myAreaId');
     let charsPairRow = Number(textArea.cols);
     let printedText = textArea.value;
     let seperateLines = printedText.split('\n');
