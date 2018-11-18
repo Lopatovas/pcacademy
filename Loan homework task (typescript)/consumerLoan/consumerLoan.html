@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="./consumerLoan.ts"></script>
+        <script src="../dist/bundle.js"></script>
         <link rel="stylesheet" href="./consumerLoan.css">
         <title>Consumer Loan</title>
     </head>
     <body>
-        <form>
+        <div>
             <div>
                 <label for="Loan amount">Loan amount:</label>
                 <br>
-                <input type="range" name="Loan amount" min="1" max="10000" value="1">
+                <input type="range" name="Loan amount" min="1" max="10000" value="1" id="loanAmount">
                 <input type="number" min="1" max="5000">
             </div>
             <div>
                 <label for="Loan time">Loan time:</label>
                 <br>
-                <input type="range" name="Loan time" min="1" max="60" value="1">
+                <input type="range" name="Loan time" min="1" max="60" value="1" id="loanTime">
                 <input type="number">
             </div>
             <div>
@@ -29,7 +29,7 @@
                     <option value="other">Other..</option>
                 </select>
             </div>
-            <button>Count rates</button>
-        </form>
+            <button id="consumerLoanSubmit">Count rates</button>
+        </div>
     </body>
 </html>

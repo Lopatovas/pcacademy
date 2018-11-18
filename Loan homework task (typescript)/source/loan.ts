@@ -1,4 +1,4 @@
-abstract class Loan {
+export default abstract class Loan {
 
     amount:number;
     time:number;

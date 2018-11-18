@@ -1,4 +1,6 @@
-export class FastLoan extends Loan implements ILoan{
+import Loan from "./loan";
+
+export default class FastLoan extends Loan implements ILoan{
 
     interestRate:number = 0.2;
     maxAmount:number = 5000;
