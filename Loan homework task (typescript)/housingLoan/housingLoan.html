@@ -8,28 +8,42 @@
     <body>
         <div>
             <div>
-                <label>Monthly salary:</label>
+            <h1>Housing Loan</h1>
+            <h3>About:</h3>
+            <p>The housing loan is used for the purchase of real estate and is perfect for families who wish to obtain a new home.
+                The maximum amount that is possible to obtain trough this loan depends on the monthly salary.
+                The maximum term of the loan is 30 years.
+                The interest rate is 20%.
+            </p>
+        </div>
+            <div>
+                <label>Monthly salary (euros):</label>
                 <br>
-                <input type="number" min="0">
+                <input type="number" min="0" id="monthlySalary" value="0">
             </div>
             <div>
                 <label>Amount of children:</label>
                 <br>
-                <input type="number" min="0">
+                <input type="number" min="0" id="amountOfChildren" value="0">
             </div>
             <div>
-                <label for="Loan amount">Loan amount:</label>
+                <label for="Loan amount">Loan amount (euros):</label>
                 <br>
-                <input type="range" name="Loan amount" min="1" value="1" id="loanAmount">
-                <input type="number" min="1">
+                <label>Selected amount: <input type="number" min="1" value="1" id="loanAmountInput"></input></label>
+                <br>
+                <input type="range" name="Loan amount" min="1" max="1" value="1" id="loanAmount">
             </div>
             <div>
-                <label for="Loan time">Loan time:</label>
+                <label for="Loan time">Loan time (months):</label>
+                <br>
+                <label>Selected amount: <input type="number" min="1" max="360" value="1" id="loanTimeInput"></input></label>
                 <br>
                 <input type="range" name="Loan time" min="1" max="360" value="1" id="loanTime">
-                <input type="number">
             </div>
             <button id="housingLoanSubmit">Count rates</button>
+            <div>
+                <p id="result"></p>
+            </div>
         </div>
     </body>
 </html>

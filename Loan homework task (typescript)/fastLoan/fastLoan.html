@@ -7,17 +7,32 @@
     </head>
     <body>
         <div>
+            <h1>Fast Loan</h1>
+            <h3>About:</h3>
+            <p>The fast loan is used for anything and is quickly obtainable.
+                The maximum amount that is possible to obtain trough this loan is 5000 euros. The maximum term of the loan is 2 years.
+                The interest rate is 20%.
+            </p>
+        </div>
+        <div>
             <div>
-                <label id="loanAmountTxt">Loan amount:</label>
+                <label>Loan amount (euros):</label>
+                <br>
+                <label>Selected amount: <input type="number" min="1" max="5000" value="1" id="loanAmountInput"></input></label>
                 <br>
                 <input type="range" min="1" max="5000" value="1" id="loanAmount">
             </div>
             <div>
-                <label for="Loan time">Loan time:</label>
+                <label>Loan time (months):</label>
                 <br>
-                <input type="range" name="Loan time" min="1" max="24" value="1" id="loanTime">
+                <label>Selected amount: <input type="number" min="1" max="24" value="1" id="loanTimeInput"></input></label>
+                <br>
+                <input type="range" min="1" max="24" value="1" id="loanTime">
             </div>
             <button id="fastLoanSubmit">Count rates</button>
+            <div>
+                <p id="result"></p>
+            </div>
         </div>
     </body>
 </html>

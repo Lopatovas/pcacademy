@@ -7,29 +7,42 @@
     </head>
     <body>
         <div>
+            <h1>Consumer Loan</h1>
+            <h3>About:</h3>
+            <p>The consumer loan is used for the purchase of various items or any other individual use.
+                The maximum amount that is possible to obtain trough this loan is 10000 euros. The maximum term of the loan is 5 years.
+                The interest rate is counted acording to the specified item for which the loan is taken for.
+            </p>
+        </div>
+        <div>
             <div>
-                <label for="Loan amount">Loan amount:</label>
+                <label>Loan amount (euros):</label>
                 <br>
-                <input type="range" name="Loan amount" min="1" max="10000" value="1" id="loanAmount">
-                <input type="number" min="1" max="5000">
+                <label>Selected amount: <input type="number" min="1" max="10000" value="1" id="loanAmountInput"></input></label>
+                <br>
+                <input type="range" min="1" max="10000" value="1" id="loanAmount">
             </div>
             <div>
-                <label for="Loan time">Loan time:</label>
+                <label>Loan time (months):</label>
                 <br>
-                <input type="range" name="Loan time" min="1" max="60" value="1" id="loanTime">
-                <input type="number">
+                <label>Selected amount: <input type="number" min="1" max="60" value="1" id="loanTimeInput"></input></label>
+                <br>
+                <input type="range" min="1" max="60" value="1" id="loanTime">
             </div>
             <div>
                 <label>Purpose of loan:</label>
-                <select>
-                    <option value="car">Car</option>
-                    <option value="tech">Technology</option>
-                    <option value="travel">Travel</option>
-                    <option value="furniture">Furniture</option>
-                    <option value="other">Other..</option>
+                <select id="itemSelectDropdown">
+                    <option value="0.1" selected="selected">Car</option>
+                    <option value="0.15">Technology</option>
+                    <option value="0.18">Travel</option>
+                    <option value="0.12">Furniture</option>
+                    <option value="0.2">Other..</option>
                 </select>
             </div>
             <button id="consumerLoanSubmit">Count rates</button>
+            <div>
+                <p id="result"></p>
+            </div>
         </div>
     </body>
 </html>
