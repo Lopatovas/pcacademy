@@ -2,46 +2,45 @@
 <html>
     <head>
         <script src="../dist/bundle.js"></script>
-        <link rel="stylesheet" href="./consumerLoan.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style/style.css">
         <title>Consumer Loan</title>
     </head>
     <body>
-        <div>
-            <h1>Consumer Loan</h1>
-            <h3>About:</h3>
-            <p>The consumer loan is used for the purchase of various items or any other individual use.
-                The maximum amount that is possible to obtain trough this loan is 10000 euros. The maximum term of the loan is 5 years.
-                The interest rate is counted acording to the specified item for which the loan is taken for.
-            </p>
-        </div>
-        <div>
+        <div class="col-md-6 col-md-offset-3">
+            <div>
+                <h1>Consumer Loan</h1>
+                <h3>About:</h3>
+                <p>The consumer loan is used for the purchase of various items or any other individual use.
+                    The maximum amount that is possible to obtain trough this loan is 10000 euros. The maximum term of the loan is 5 years.
+                    The interest rate is counted acording to the specified item for which the loan is taken for.
+                </p>
+            </div>
             <div>
                 <label>Loan amount (euros):</label>
                 <br>
-                <label>Selected amount: <input type="number" min="1" max="10000" value="1" id="loanAmountInput"></input></label>
+                <input class="form-control" type="number" min="1" max="10000" value="1" id="loanAmountInput"></input>
                 <br>
                 <input type="range" min="1" max="10000" value="1" id="loanAmount">
-            </div>
-            <div>
                 <label>Loan time (months):</label>
                 <br>
-                <label>Selected amount: <input type="number" min="1" max="60" value="1" id="loanTimeInput"></input></label>
+                <input class="form-control" type="number" min="1" max="60" value="1" id="loanTimeInput"></input>
                 <br>
                 <input type="range" min="1" max="60" value="1" id="loanTime">
-            </div>
-            <div>
                 <label>Purpose of loan:</label>
-                <select id="itemSelectDropdown">
+                <select class="form-control" id="itemSelectDropdown">
                     <option value="0.1" selected="selected">Car</option>
                     <option value="0.15">Technology</option>
                     <option value="0.18">Travel</option>
                     <option value="0.12">Furniture</option>
                     <option value="0.2">Other..</option>
                 </select>
-            </div>
-            <button id="consumerLoanSubmit">Count rates</button>
-            <div>
-                <p id="result"></p>
+                <br>
+                <button class="btn btn-warning btn-sm" id="consumerLoanSubmit">Count rates</button>
+                <a class="btn btn-warning btn-sm" href="../index.html">Home</a>
+                <div style="margin-top: 10px">
+                    <p id="result"></p>
+                </div>
             </div>
         </div>
     </body>

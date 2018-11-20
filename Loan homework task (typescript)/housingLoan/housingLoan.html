@@ -2,47 +2,43 @@
 <html>
     <head>
         <script src="../dist/bundle.js"></script>
-        <link rel="stylesheet" href="./housingLoan.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="../style/style.css">
         <title>Housing Loan</title>
     </head>
     <body>
-        <div>
+        <div class="col-md-6 col-md-offset-3">
             <div>
-            <h1>Housing Loan</h1>
-            <h3>About:</h3>
-            <p>The housing loan is used for the purchase of real estate and is perfect for families who wish to obtain a new home.
-                The maximum amount that is possible to obtain trough this loan depends on the monthly salary.
-                The maximum term of the loan is 30 years.
-                The interest rate is 20%.
-            </p>
-        </div>
-            <div>
+                <h1>Housing Loan</h1>
+                <h3>About:</h3>
+                <p>The housing loan is used for the purchase of real estate and is perfect for families who wish to obtain a new home.
+                    The maximum amount that is possible to obtain trough this loan depends on the monthly salary.
+                    The maximum term of the loan is 30 years.
+                    The interest rate is 20%.
+                </p>
+            </div>
+            <div class="form-group">
                 <label>Monthly salary (euros):</label>
                 <br>
-                <input type="number" min="0" id="monthlySalary" value="0">
-            </div>
-            <div>
+                <input class="form-control" type="number" min="0" id="monthlySalary" value="0">
                 <label>Amount of children:</label>
                 <br>
-                <input type="number" min="0" id="amountOfChildren" value="0">
-            </div>
-            <div>
+                <input class="form-control" type="number" min="0" id="amountOfChildren" value="0">
                 <label for="Loan amount">Loan amount (euros):</label>
                 <br>
-                <label>Selected amount: <input type="number" min="1" value="1" id="loanAmountInput"></input></label>
+                <input class="form-control" type="number" min="1" value="1" id="loanAmountInput"></input>
                 <br>
-                <input type="range" name="Loan amount" min="1" max="1" value="1" id="loanAmount">
-            </div>
-            <div>
+                <input style="margin-bottom: 10px" class="form-control-range" type="range" name="Loan amount" min="1" max="1" value="1" id="loanAmount">
                 <label for="Loan time">Loan time (months):</label>
                 <br>
-                <label>Selected amount: <input type="number" min="1" max="360" value="1" id="loanTimeInput"></input></label>
+                <input class="form-control" type="number" min="1" max="360" value="1" id="loanTimeInput"></input>
                 <br>
-                <input type="range" name="Loan time" min="1" max="360" value="1" id="loanTime">
-            </div>
-            <button id="housingLoanSubmit">Count rates</button>
-            <div>
-                <p id="result"></p>
+                <input style="margin-bottom: 10px" class="custom-range" type="range" name="Loan time" min="1" max="360" value="1" id="loanTime">
+                <button class="btn btn-warning btn-sm" id="housingLoanSubmit">Count rates</button>
+                <a class="btn btn-warning btn-sm" href="../index.html">Home</a>
+                <div style="margin-top: 10px">
+                    <p id="result"></p>
+                </div>
             </div>
         </div>
     </body>

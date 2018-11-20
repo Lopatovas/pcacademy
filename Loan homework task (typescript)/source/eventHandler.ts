@@ -19,25 +19,25 @@ let resultText:HTMLElement;
 let isHouseForm:boolean = false;
 
 window.onload = function() {
-    if(location.pathname.substring(location.pathname.lastIndexOf("/") + 1) == "fastLoan.html"){
+    LoanSubmitButton = document.getElementById("fastLoanSubmit")
+    if(LoanSubmitButton != null){
         isHouseForm = false;
-        LoanSubmitButton = document.getElementById("fastLoanSubmit");
         LoanSubmitButton.addEventListener("click", createFastLoan);
         findInputElements();
         attachEventsToInputs();
     }
-    else if(location.pathname.substring(location.pathname.lastIndexOf("/") + 1) == "consumerLoan.html"){
+    LoanSubmitButton = document.getElementById("consumerLoanSubmit");
+    if(LoanSubmitButton != null){
         isHouseForm = false;
-        LoanSubmitButton = document.getElementById("consumerLoanSubmit");
         LoanSubmitButton.addEventListener("click", createConsumerLoan);
         findInputElements();
         attachEventsToInputs();
     }
-    else if(location.pathname.substring(location.pathname.lastIndexOf("/") + 1) == "housingLoan.html"){
+    LoanSubmitButton = document.getElementById("housingLoanSubmit");
+    if(LoanSubmitButton != null){
         isHouseForm = true;
         monthlySalaryInput = (<HTMLInputElement>document.getElementById("monthlySalary"));
         amountOfChildrenInput = (<HTMLInputElement>document.getElementById("amountOfChildren"));
-        LoanSubmitButton = document.getElementById("housingLoanSubmit");
         LoanSubmitButton.addEventListener("click", createHousingLoan);
         monthlySalaryInput.addEventListener("input", housingMaxAmount);
         findInputElements();
