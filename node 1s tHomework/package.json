@@ -11,5 +11,8 @@
     "url": "Lopatovas/pcacademy"
   },
   "author": "Edgaras Lopatovas",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "os-utils": "0.0.14"
+  }
 }
