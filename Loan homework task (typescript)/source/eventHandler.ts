@@ -1,7 +1,7 @@
 import FastLoan from "./fastLoan";
 import ConsumerLoan from "./consumerLoan";
 import HousingLoan from "./housingLoan";
-import Loan from "./loan";
+import Constant from "./constant";
 
 let fastLoan:FastLoan;
 let housingLoan:HousingLoan;
@@ -15,8 +15,8 @@ let amountSlider:HTMLInputElement;
 let amountInput:HTMLInputElement;
 let timeSlider:HTMLInputElement;
 let timeInput:HTMLInputElement;
-let resultText:HTMLElement;
 let isHouseForm:boolean = false;
+let constant:Constant = new Constant();
 
 window.onload = function() {
     LoanSubmitButton = document.getElementById("fastLoanSubmit")
@@ -48,7 +48,7 @@ window.onload = function() {
 function findInputElements(){
     amountSlider = (<HTMLInputElement>document.getElementById("loanAmount"));
     amountInput = (<HTMLInputElement>document.getElementById("loanAmountInput"));
-    timeSlider = (<HTMLInputElement>document.getElementById("loanTime"))
+    timeSlider = (<HTMLInputElement>document.getElementById("loanTime"));
     timeInput = (<HTMLInputElement>document.getElementById("loanTimeInput"));
 }
 
@@ -62,8 +62,8 @@ function attachEventsToInputs(){
 function createFastLoan():void {
     loanAmount = parseFloat(amountSlider.value);
     loanTime = parseFloat(timeSlider.value);
-    fastLoan = new FastLoan(loanAmount, loanTime, 0.2);
-    updateResultText(fastLoan);
+    fastLoan = new FastLoan(loanAmount, loanTime, constant.FAST_LOAN_INTEREST_RATE);
+    fastLoan.updateResultText();
 }
 
 function createConsumerLoan(): void {
@@ -72,14 +72,14 @@ function createConsumerLoan(): void {
     let dropdownItemList = (<HTMLSelectElement>document.getElementById("itemSelectDropdown"));
     var selectedItem = parseFloat(dropdownItemList.options[dropdownItemList.selectedIndex].value);
     consumerLoan = new ConsumerLoan(loanAmount, loanTime, selectedItem);
-    updateResultText(consumerLoan);
+    consumerLoan.updateResultText();
 }
 
 function createHousingLoan(): void{
     loanAmount = parseFloat(amountSlider.value);
     loanTime = parseFloat(timeSlider.value);
-    housingLoan = new HousingLoan(loanAmount, loanTime, 0.02, parseInt(amountOfChildrenInput.value), parseFloat(monthlySalaryInput.value));
-    updateResultText(housingLoan);
+    housingLoan = new HousingLoan(loanAmount, loanTime, constant.HOUSING_LOAN_INTEREST_RATE, parseInt(amountOfChildrenInput.value), parseFloat(monthlySalaryInput.value));
+    housingLoan.updateResultText();
 }
 
 function changeAmountInput(){
@@ -116,10 +116,6 @@ function changeTimeSlider(){
     }
 }
 
-function updateResultText(loan:Loan){
-    resultText = document.getElementById("result");
-    resultText.innerHTML = loan.printInfo();
-}
 
 function housingMaxAmount(){
     amountSlider.max = "" + (parseFloat(monthlySalaryInput.value) / 2 * parseInt(timeSlider.value));

@@ -1,6 +1,6 @@
 import Loan from "./loan";
 
-export default class FastLoan extends Loan implements ILoan{
+export default class FastLoan extends Loan{
 
     maxAmount:number = 5000;
     maxTime:number = 24;

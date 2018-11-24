@@ -25,4 +25,9 @@ export default abstract class Loan {
         let text = `Selected amount: ${this.amount} EU <br> Selected time: ${this.time} Months<br> Total sum to return: ${this.countFullPrice()} EU<br> Monthly amount to pay: ${this.countMonthlyPay()} EU`
         return text;
     }
+
+    updateResultText(){
+        let resultText = document.getElementById("result");
+        resultText.innerHTML = this.printInfo();
+    }
 }

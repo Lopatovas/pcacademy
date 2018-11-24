@@ -1,6 +1,6 @@
 import Loan from "./loan";
 
-export default class HousingLoan extends Loan implements ILoan{
+export default class HousingLoan extends Loan{
     maxAmount: number;
     maxTime: number = 360;
     numberOfChildren:number;
