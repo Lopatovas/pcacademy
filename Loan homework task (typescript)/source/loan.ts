@@ -26,7 +26,7 @@ export default abstract class Loan {
         return text;
     }
 
-    updateResultText(){
+    updateResultText(): void{
         let resultText = document.getElementById("result");
         resultText.innerHTML = this.printInfo();
     }

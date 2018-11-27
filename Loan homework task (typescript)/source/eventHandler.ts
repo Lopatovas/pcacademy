@@ -45,7 +45,7 @@ window.onload = function() {
     }
 }
 
-function attachEventsToInputs(){
+function attachEventsToInputs(): void{
     amountSlider.addEventListener("input", changeAmountInput);
     amountInput.addEventListener("input", changeAmountSlider);
     timeSlider.addEventListener("input", changeTimeInput);
@@ -75,11 +75,11 @@ function createHousingLoan(): void{
     housingLoan.updateResultText();
 }
 
-function changeAmountInput(){
+function changeAmountInput(): void{
     amountInput.value = amountSlider.value;
 }
 
-function changeAmountSlider(){
+function changeAmountSlider(): void{
     if(amountInput.value === "" || amountInput.value < amountSlider.min){
         amountInput.value = amountSlider.min;
     }
@@ -89,14 +89,14 @@ function changeAmountSlider(){
     amountSlider.value = amountInput.value;
 }
 
-function changeTimeInput(){
+function changeTimeInput(): void{
     timeInput.value = timeSlider.value;
     if(isHouseForm){
         housingMaxAmount();
     }
 }
 
-function changeTimeSlider(){
+function changeTimeSlider(): void{
     if(timeInput.value === "" || timeInput.value < timeSlider.min){
         timeInput.value = timeSlider.min;
     }
@@ -109,14 +109,14 @@ function changeTimeSlider(){
     }
 }
 
-function findInputElements(){
+function findInputElements(): void{
     amountSlider = (<HTMLInputElement>document.getElementById("loanAmount"));
     amountInput = (<HTMLInputElement>document.getElementById("loanAmountInput"));
     timeSlider = (<HTMLInputElement>document.getElementById("loanTime"));
     timeInput = (<HTMLInputElement>document.getElementById("loanTimeInput"));
 }
 
-function housingMaxAmount(){
+function housingMaxAmount(): void{
     amountSlider.max = "" + (parseFloat(monthlySalaryInput.value) / 2 * parseInt(timeSlider.value));
     if(amountInput.value === "" || amountInput.value < amountSlider.min){
         amountInput.value = amountSlider.min;
