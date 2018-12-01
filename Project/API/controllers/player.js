@@ -16,3 +16,9 @@ exports.create = function (request, response){
         response.send('Saved!');
     });
 }
+
+exports.get = function (request, response){
+    Player.find((error, players) => {
+        response.send(players);
+    });
+}
