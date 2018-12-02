@@ -9,11 +9,10 @@ exports.create = function (request, response){
         playerPosition: request.body.playerPosition,
         team: request.body.team,
         jerseyNumber: request.body.jerseyNumber
-
     });
 
     player.save( () => {
-        response.send('Saved!');
+        response.send('Saved! ' + player.firstName);
     });
 }
 
