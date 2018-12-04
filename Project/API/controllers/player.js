@@ -1,4 +1,6 @@
 const Player = require('../models/player');
+const Validator = require('../validation/player');
+const config = require('../validation/config');
 
 exports.create = function (request, response){
     let player = new Player({
@@ -11,9 +13,15 @@ exports.create = function (request, response){
         jerseyNumber: request.body.jerseyNumber
     });
 
-    player.save( () => {
-        response.send('Saved! ' + player.firstName);
-    });
+    let validator = new Validator(player);
+    if(validator.testInputFields()){
+        player.save( () => {
+            response.send(`${request.body.firstName} ${request.body.lastName} has been saved succesfully!`);
+        });
+    }
+    else{
+        response.send(validator.errorMessage);
+    }
 }
 
 exports.get = function (request, response){
@@ -30,7 +38,7 @@ exports.get = function (request, response){
 exports.getById = function (request, response){
     Player.findById(request.params.id, (error, player) => {
         if(error || player == null){
-            response.send(`Something went wrong while searching for player: ${request.params.id}`);
+            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`);
         }
         else{
             response.send(player);
@@ -41,10 +49,10 @@ exports.getById = function (request, response){
 exports.updateById = function(request, response){
     Player.findByIdAndUpdate(request.params.id, request.body, (error, player) =>{
         if(error){
-            response.send(error);
+            response.send(`Update ${config.INVALID_OPERATION_ERROR}`)
         }
         else{
-            response.send(player);
+            response.send(`Update ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
         }
     });
 }
@@ -52,10 +60,10 @@ exports.updateById = function(request, response){
 exports.delete = function(request, response){
     Player.findByIdAndRemove(request.params.id, (error, player) =>{
         if(error){
-            response.send(error);
+            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`)
         }
         else{
-            response.send(player);
+            response.send(`Delete ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
         }
     });
 }
