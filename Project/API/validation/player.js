@@ -1,4 +1,3 @@
-const Player = require('../models/player');
 const config = require('./config');
 
 class Validator {
