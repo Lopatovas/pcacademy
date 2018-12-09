@@ -1,58 +1,74 @@
 const Team = require('../models/team');
-const config = require('../validation/config');
+const boom = require('boom');
 
-exports.create = function (request, response){
-    let team = new Team({
-        teamName: request.body.teamName,
-        homeTown: request.body.homeTown,
-        stadium: request.body.stadium,
-        coach: request.body.coach
-    });
-    team.save( () => {
-        response.send(`${request.body.teamName} has been saved succesfully!`);
-    });
+exports.create = async function (request, response, next){
+    try{
+        let team = new Team({
+            teamName: request.body.teamName,
+            homeTown: request.body.homeTown,
+            stadium: request.body.stadium,
+            coach: request.body.coach
+        });
+    
+        let result = await team.save();
+        response.send(result);
+
+    } catch(error) {
+        next(boom.badData(error));
+    }
 }
 
-exports.get = function (request, response){
-    Team.find((error, teams) => {
-        if(error){
-            response.send(error);
-        }
-        else{
-            response.send(teams);
-        }
-    });
+exports.get = async function (request, response, next){
+    try{
+        let result = await Team.find();
+        response.send(result);
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }
 
-exports.getById = function (request, response){
-    Team.findById(request.params.id, (error, team) => {
-        if(error || team == null){
-            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`);
+exports.getById = async function (request, response, next){
+    try{
+        let team = await Team.findById(request.params.id);
+        if(team == null){
+            next(boom.notFound());
         }
         else{
             response.send(team);
         }
-    });
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }
 
-exports.updateById = function(request, response){
-    Team.findByIdAndUpdate(request.params.id, request.body, (error, team) =>{
-        if(error){
-            response.send(`Update ${config.INVALID_OPERATION_ERROR}`)
+exports.updateById = async function(request, response, next){
+    try{
+        let team = await Team.findByIdAndUpdate(request.params.id, request.body);
+        if(team == null){
+            next(boom.notFound());
         }
         else{
-            response.send(`Update ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
+            response.send(team);
         }
-    });
+    }
+    catch(error){
+        next(boom.badData(error));
+    }
 }
 
-exports.delete = function(request, response){
-    Team.findByIdAndRemove(request.params.id, (error, player) =>{
-        if(error){
-            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`)
+exports.delete = async function(request, response, next){
+    try{
+        let team = await Team.findByIdAndRemove(request.params.id);
+        if(team == null){
+            next(boom.notFound());
         }
         else{
-            response.send(`Delete ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
+            response.send(team);
         }
-    });
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }

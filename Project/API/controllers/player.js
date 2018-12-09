@@ -1,69 +1,77 @@
 const Player = require('../models/player');
-const Validator = require('../validation/player');
-const config = require('../validation/config');
+const boom = require('boom');
 
-exports.create = function (request, response){
-    let player = new Player({
-        firstName: request.body.firstName,
-        lastName: request.body.lastName,
-        age: request.body.age,
-        nationality: request.body.nationality,
-        playerPosition: request.body.playerPosition,
-        team: request.body.team,
-        jerseyNumber: request.body.jerseyNumber
-    });
-
-    let validator = new Validator(player);
-    if(validator.testInputFields()){
-        player.save( () => {
-            response.send(`${request.body.firstName} ${request.body.lastName} has been saved succesfully!`);
+exports.create = async function (request, response, next){
+    try{
+        let player = new Player({
+            firstName: request.body.firstName,
+            lastName: request.body.lastName,
+            age: request.body.age,
+            nationality: request.body.nationality,
+            playerPosition: request.body.playerPosition,
+            team: request.body.team,
+            jerseyNumber: request.body.jerseyNumber
         });
-    }
-    else{
-        response.send(validator.errorMessage);
+    
+        let result = await player.save();
+        response.send(result);
+
+    } catch(error) {
+        next(boom.badData(error));
     }
 }
 
-exports.get = function (request, response){
-    Player.find((error, players) => {
-        if(error){
-            response.send(error);
-        }
-        else{
-            response.send(players);
-        }
-    });
+exports.get = async function (request, response, next){
+    try{
+        let result = await Player.find();
+        response.send(result);
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }
 
-exports.getById = function (request, response){
-    Player.findById(request.params.id, (error, player) => {
-        if(error || player == null){
-            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`);
+exports.getById = async function (request, response, next){
+    try{
+        let player = await Player.findById(request.params.id);
+        if(player == null){
+            next(boom.notFound());
         }
         else{
             response.send(player);
         }
-    });
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }
 
-exports.updateById = function(request, response){
-    Player.findByIdAndUpdate(request.params.id, request.body, (error, player) =>{
-        if(error){
-            response.send(`Update ${config.INVALID_OPERATION_ERROR}`)
+exports.updateById = async function(request, response, next){
+    try{
+        let player = await Player.findByIdAndUpdate(request.params.id, request.body);
+        if(player == null){
+            next(boom.notFound());
         }
         else{
-            response.send(`Update ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
+            response.send(player);
         }
-    });
+    }
+    catch(error){
+        next(boom.badData(error));
+    }
 }
 
-exports.delete = function(request, response){
-    Player.findByIdAndRemove(request.params.id, (error, player) =>{
-        if(error){
-            response.send(`${config.INVALID_KEY_ERROR} ${request.params.id}`)
+exports.delete = async function(request, response, next){
+    try{
+        let player = await Player.findByIdAndRemove(request.params.id);
+        if(player == null){
+            next(boom.notFound());
         }
         else{
-            response.send(`Delete ${config.OPERATION_SUCCESSFULL} ${request.params.id}`);
+            response.send(player);
         }
-    });
+    }
+    catch(error){
+        next(boom.internal(error));
+    }
 }
