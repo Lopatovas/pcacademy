@@ -9,22 +9,20 @@ const PlayerModel = require('../models/player');
 chai.should();
 chai.use(chaiHtpp);
 
+
 describe('Players', () => {
 
     beforeEach(done => {
         PlayerModel.remove({}, err=>{
             done();
         });
-
-        PlayerModel.create(new PlayerModel({
-            firstName: 'Virgil',
-            lastName: 'Van Dijk',
-            age: 27,
-            nationality: 'Dutch',
-            playerPosition: 'Defender',
-            team: 'Liverpool',
-            jerseyNumber: 4
-        }))
+        PlayerModel.create(new PlayerModel({firstName: 'Mohamed', 
+        lastName: 'Salah', 
+        age: 26, 
+        nationality: 'Egyptian', 
+        playerPosition: 'Forward', 
+        team: 'Liverpool',
+        jerseyNumber: 11}))
     });
 
     describe('/GET with unauthorized access', () => {
@@ -55,7 +53,7 @@ describe('Players', () => {
     describe('/POST player', () => {
         it('it should post a new player', done => {
             chai.request(app)
-                .post('/')
+                .post('/players')
                 .set('token', config.TOKEN_TEST)
                 .send({firstName: 'Virgil', 
                     lastName: 'Van Dijk', 
@@ -65,15 +63,14 @@ describe('Players', () => {
                     team: 'Liverpool',
                     jerseyNumber: 4})
                 .end((error, response)=> {
-                    console.log(response.body);
                     response.should.have.status(200);
-                    response.body.user.should.have.property('firstName', 'Virgil');
-                    response.body.user.should.have.property('lastName', 'Van Dijk');
-                    response.body.user.should.have.property('age', 27);
-                    response.body.user.should.have.property('nationality', 27);
-                    response.body.user.should.have.property('playerPosition', 'Defender');
-                    response.body.user.should.have.property('team', 'Liverpool');
-                    response.body.user.should.have.property('jerseyNumber', 4);
+                    response.body.should.have.property('firstName', 'Virgil');
+                    response.body.should.have.property('lastName', 'Van Dijk');
+                    response.body.should.have.property('age', 27);
+                    response.body.should.have.property('nationality', 'Dutch');
+                    response.body.should.have.property('playerPosition', 'Defender');
+                    response.body.should.have.property('team', 'Liverpool');
+                    response.body.should.have.property('jerseyNumber', 4);
                     done();
                 });
         });
@@ -82,7 +79,7 @@ describe('Players', () => {
     describe('/POST player', () => {
         it('it should return unauthorized', done => {
             chai.request(app)
-                .post('/')
+                .post('/players')
                 .send({firstName: 'Virgil', 
                     lastName: 'Van Dijk', 
                     age: 27, 
@@ -91,71 +88,9 @@ describe('Players', () => {
                     team: 'Liverpool',
                     jerseyNumber: 4})
                 .end((error, response)=> {
-                    console.log(response.body);
                     response.should.have.status(401);
-                    response.body.user.should.have.property('firstName', 'Virgil');
-                    response.body.user.should.have.property('lastName', 'Van Dijk');
-                    response.body.user.should.have.property('age', 27);
-                    response.body.user.should.have.property('nationality', 27);
-                    response.body.user.should.have.property('playerPosition', 'Defender');
-                    response.body.user.should.have.property('team', 'Liverpool');
-                    response.body.user.should.have.property('jerseyNumber', 4);
                     done();
                 });
         });
     });
-
-    describe('/PUT player', () => {
-        it('it should update an existing player', done => {
-            chai.request(app)
-                .put('/')
-                .set('token', config.TOKEN_TEST)
-                .send({firstName: 'Virgil', 
-                    lastName: 'Van Dijk', 
-                    age: 27, 
-                    nationality: 'Dutch', 
-                    playerPosition: 'Defender', 
-                    team: 'Liverpool',
-                    jerseyNumber: 4})
-                .end((error, response)=> {
-                    console.log(response.body);
-                    response.should.have.status(200);
-                    response.body.user.should.have.property('firstName', 'Virgil');
-                    response.body.user.should.have.property('lastName', 'Van Dijk');
-                    response.body.user.should.have.property('age', 27);
-                    response.body.user.should.have.property('nationality', 27);
-                    response.body.user.should.have.property('playerPosition', 'Defender');
-                    response.body.user.should.have.property('team', 'Liverpool');
-                    response.body.user.should.have.property('jerseyNumber', 4);
-                    done();
-                });
-        });
-    });
-
-    describe('/PUT player', () => {
-        it('it should return unauthorized', done => {
-            chai.request(app)
-                .post('/')
-                .send({firstName: 'Virgil', 
-                    lastName: 'Van Dijk', 
-                    age: 27, 
-                    nationality: 'Dutch', 
-                    playerPosition: 'Defender', 
-                    team: 'Liverpool',
-                    jerseyNumber: 4})
-                .end((error, response)=> {
-                    console.log(response.body);
-                    response.should.have.status(401);
-                    response.body.user.should.have.property('firstName', 'Virgil');
-                    response.body.user.should.have.property('lastName', 'Van Dijk');
-                    response.body.user.should.have.property('age', 27);
-                    response.body.user.should.have.property('nationality', 27);
-                    response.body.user.should.have.property('playerPosition', 'Defender');
-                    response.body.user.should.have.property('team', 'Liverpool');
-                    response.body.user.should.have.property('jerseyNumber', 4);
-                    done();
-                });
-        });
-    });
-    
 });
