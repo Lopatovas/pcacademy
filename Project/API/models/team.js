@@ -7,6 +7,12 @@ let TeamSchema = new Schema({
     homeTown: {type: String, required: true},
     stadium: {type: String, required: true},
     coach: {type:String, required: true, unique: true}
-});
+}, {toJSON: {virtuals: true}});
+
+TeamSchema.virtual('players', {
+    ref: 'Player',
+    localField: 'teamName',
+    foreignField: 'team'
+})
 
 module.exports = mongoose.model('Team', TeamSchema);

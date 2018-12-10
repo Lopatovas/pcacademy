@@ -1,12 +1,33 @@
-const User = require('../models/user');
+const passport = require('passport');
+const jwt = require('jsonwebtoken');
+const CONFIG = require('../config');
 
-exports.create = function (request, response){
-    let user = new User({
-        userName: request.body.userName,
-        email: request.body.email,
-        password: request.body.password
+exports.signUp = async function(request, response){
+    response.json({
+        message: 'Sign up sucessful',
+        user: request.user
     });
-    user.save( () => {
-        response.send(`${request.body.userName} has been saved succesfully!`);
-    });
+}
+
+exports.login = async function(request, response){
+    passport.authenticate('login', async (error, user, info) => {
+        try{
+            if(error || !user){
+                response.send(info);
+            }
+
+            request.login(user, {session: false}, async (error) => {
+                if(error){
+                    response.send(error);
+                }
+                const body = {_id: user._id, userName: user.userName};
+                const token = jwt.sign({user: body}, CONFIG.JWT_SECRET);
+                response.json({token});
+            });
+
+        } catch(err){
+            response.send(err.message);
+        }
+
+    })(request, response);
 }
