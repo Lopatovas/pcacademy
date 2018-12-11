@@ -72,3 +72,8 @@ exports.delete = async function(request, response, next){
         next(boom.internal(error));
     }
 }
+
+exports.get = async function (request, response){
+    let teams = await Team.find().populate('players');
+    response.send(teams);
+}

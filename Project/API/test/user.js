@@ -26,6 +26,18 @@ describe('User', () => {
             });
         });
 
+        describe('/signup', () => {
+            it('it should throw an error, due to a matching user already signed up', done => {
+                chai.request(app)
+                    .post('/users/signup')
+                    .send({userName: 'admin', email: 'admin@admin.com', password: 'admin'})
+                    .end((error, response)=> {
+                        response.should.have.status(500);
+                        done();
+                    });
+            });
+        });
+
         describe('/login', () => {
             it('it should log a user in successfully', done => {
                 chai.request(app)

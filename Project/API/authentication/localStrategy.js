@@ -9,16 +9,16 @@ const signUpStrategy = new LocalStrategy({
     passReqToCallback: true
 }, createUser);
 
-async function createUser (req, userName, password, done) {
+async function createUser (req, userName, password, next) {
     try {
         const user = await UserModel.create({
             userName: userName,
             email: req.body.email, 
             password: password});
-        done(null, user);
+            next(null, user);
 
     } catch(error) {
-        done(error);
+        next(error);
     }
 }
 
@@ -31,15 +31,14 @@ async function loginUser (userName, password, next) {
     try {
         const user = await UserModel.findOne({userName});
         if(!user){
-            next(null, false, {message: messages.NOT_FOUND});
+            return next(null, false, {message: messages.NOT_FOUND});
         }
 
         const isValid = await user.isValidPassword(password);
         if(!isValid){
-            next(null, false, {message: messages.INVALID_PASSWORD});
+            return next(null, false, {message: messages.INVALID_PASSWORD});
         }
-
-        return next(null, user, {message: messages.SUCCESS});
+        next(null, user, {message: messages.SUCCESS});
 
     } catch(error) {
         next(error);

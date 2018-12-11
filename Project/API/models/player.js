@@ -22,7 +22,7 @@ let PlayerSchema = new Schema({
         type: String, 
         required: true },
     team: {
-        type: String },
+        type: Schema.Types.String, ref: 'Team'},
     jerseyNumber: {
         type:Number }
 });
