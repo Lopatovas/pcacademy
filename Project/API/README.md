@@ -15,6 +15,9 @@ Node.js
 NPM
 express
 MongoDB
+JWT
+Passport
+Mongoose
 
 ## Author
 Edgaras Lopatovas
