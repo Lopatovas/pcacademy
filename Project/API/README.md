@@ -6,7 +6,6 @@ Run the following command:
 `npm i`
 
 Prerequisites
-MongoDB Postman Robo3T
 
 ## Built With
 Node.js
