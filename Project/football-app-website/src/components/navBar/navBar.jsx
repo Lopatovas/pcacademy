@@ -3,7 +3,7 @@ import React from 'react'
 export default function NavBar(props) {
     return (
         <div>
-            <nav className="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="/">Home</a>
                 <ul className='navbar-nav'>
                     <li className="nav-item">

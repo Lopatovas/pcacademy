@@ -1,0 +1,16 @@
+.title{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+
+.text{
+    padding-bottom:2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.box{
+    border-radius: 25px;
+}

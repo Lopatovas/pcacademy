@@ -10,7 +10,7 @@ export default function Card(props){
                     {props.teamName}
                 </div>
                 <div className="card-body">
-                    <p className="text-white card-text">{props.teamInfo}</p>
+                    <p className="text-white card-text">{props.teamInfo}</p>s
                     <a href="/" className="btn btn-primary">{props.buttonText}</a>
                 </div>
             </div>
