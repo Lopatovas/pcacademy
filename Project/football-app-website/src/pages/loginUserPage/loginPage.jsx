@@ -1,20 +1,27 @@
 import React from 'react';
+import config from '../../data/config';
+import './loginPage.css';
+import Footer from '../../components/footer/footer';
+import Header from '../../components/navBar/navBar';
 
-export default function LoginUser(){
-    return(
-        <div>
-            <form>
-            <div className="form-group">
-                    <label htmlFor="inputUsername">User Name</label>
-                    <input className="form-control" type="text" id="inputUsername"/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="inputPassword">Password</label>
-                    <input className="form-control" type="password" id="inputPassword" aria-describedby="passwordHelpInline"/>
-                    <small id="passwordHelpInline" class="text-muted">Must be 8-20 characters long.</small>
-                </div>
-                <button type="submit" class="btn btn-dark">Login!</button>
-            </form>
+export default function LoginUser() {
+    return (
+        <div className="bgUser">
+            <Header />
+            <div className="container padding-top">
+                <form className="bg-secondary formBox formContent text-white">
+                    <div className="form-group">
+                        <label htmlFor="inputUsername">{config.USERNAME}</label>
+                        <input className="form-control" type="text" id="inputLoginUsername" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="inputPassword">{config.PASSWORD}</label>
+                        <input className="form-control" type="password" id="inputLoginPassword" />
+                    </div>
+                    <button type="submit" className="btn btn-dark">{config.LOGIN_BUTTON}</button>
+                </form>
+            </div>
+            <Footer author={config.AUTHOR}/>
         </div>
     );
 }

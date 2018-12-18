@@ -9,12 +9,9 @@ export default function NavBar(props) {
                     <li className="nav-item">
                         <a className="nav-link" href="/">Teams</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/">Players</a>
-                    </li>
                     <li className="nav-item dropdown">
                         <a className="nav-link dropdown-toggle" href="/" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
+                            Account
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a className="dropdown-item" href="/">Register</a>

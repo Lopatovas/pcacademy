@@ -1,5 +1,5 @@
-.bg{
-    background-image:url('../../images/background/ballBackground.jpeg');
+.bgTeam{
+    background-image:url('../../images/background/teamBackground.jpg');
     background-attachment: fixed;
     min-height: 100%;
     min-width: 1024px;
@@ -12,3 +12,4 @@
 .container{
     min-height: 85vh !important;
 }
+

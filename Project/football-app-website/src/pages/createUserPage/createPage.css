@@ -1,0 +1,28 @@
+.bgUser{
+    background-image:url('../../images/background/userBackground.jpg');
+    background-attachment: fixed;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    top: 0;
+    left: 0;
+}
+
+.container{
+    min-height: 85vh !important;
+}
+
+.formBox{
+    border-radius: 25px;
+}
+
+.padding-top{
+    padding-top:25px;
+}
+
+.formContent{
+    padding-bottom:2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
