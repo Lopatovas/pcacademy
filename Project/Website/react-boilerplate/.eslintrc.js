@@ -23,6 +23,7 @@ module.exports = {
     },
   },
   rules: {
+    'linebreak-style': ["error", "windows"],
     'prettier/prettier': ['error', prettierOptions],
     'arrow-body-style': [2, 'as-needed'],
     'class-methods-use-this': 0,
