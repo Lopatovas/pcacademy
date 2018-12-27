@@ -1,16 +1,13 @@
 import React from 'react';
 import './loginPage.css';
-import Footer from 'components/Footer';
-import Header from 'components/Header';
 
-export default function LoginUser() {
+export default function LoginUser(props) {
   return (
     <div className="bgUser">
-      <Header />
       <div className="container padding-top">
         <form className="bg-secondary formBox formContent text-white">
           <div className="form-group">
-            <label htmlFor="inputUsername">{config.USERNAME}</label>
+            <label htmlFor="inputUsername">{props.USERNAME}</label>
             <input
               className="form-control"
               type="text"
@@ -18,7 +15,7 @@ export default function LoginUser() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="inputPassword">{config.PASSWORD}</label>
+            <label htmlFor="inputPassword">{props.PASSWORD}</label>
             <input
               className="form-control"
               type="password"
@@ -26,11 +23,10 @@ export default function LoginUser() {
             />
           </div>
           <button type="submit" className="btn btn-dark">
-            {config.LOGIN_BUTTON}
+            {props.LOGIN_BUTTON}
           </button>
         </form>
       </div>
-      <Footer author={config.AUTHOR} />
     </div>
   );
 }
