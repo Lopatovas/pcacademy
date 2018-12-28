@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../../utils/config';
 import PlayerListItem from '../PlayerListItem';
 
 export default function PlayerList(props) {

@@ -1,31 +1,34 @@
 import React from 'react';
 import './createPage.css';
+import config from '../../utils/config';
 
-export default function CreateUser(props) {
+export default function CreateUser() {
   return (
     <div className="bgUser">
       <div className="container padding-top">
         <form className="bg-secondary formBox formContent text-white">
           <div className="form-group">
-            <label htmlFor="inputUsername">{props.USERNAME}</label>
+            <label htmlFor="inputUsername">{config.USERNAME}</label>
             <input className="form-control" type="text" id="inputUsername" />
           </div>
           <div className="form-group">
-            <label htmlFor="inputEmail">{props.EMAIL}</label>
+            <label htmlFor="inputEmail">{config.EMAIL}</label>
             <input className="form-control" type="email" id="inputEmail" />
           </div>
           <div className="form-group">
-            <label htmlFor="inputPassword">{props.PASSWORD}</label>
+            <label htmlFor="inputPassword">{config.PASSWORD}</label>
             <input
               className="form-control"
               type="password"
               id="inputPassword"
               aria-describedby="passwordHelpInline"
             />
-            <small id="passwordHelpInline">{props.PASSWORD_INFO}</small>
+            <small id="passwordHelpInline">
+              {config.PASSWORD_REQUIREMENTS}
+            </small>
           </div>
           <button type="submit" className="btn btn-dark">
-            {props.BUTTON_TEXT}
+            {config.REGISTER_BUTTON}
           </button>
         </form>
       </div>

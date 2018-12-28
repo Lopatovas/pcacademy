@@ -37,7 +37,7 @@ export default function App() {
         <Route exact path="/players/:id" components={PlayerPage} />
         <Route component={NotFoundPage} />
       </Switch>
-      <Footer author="Edgaras Lopatovas"/>
+      <Footer author="Edgaras Lopatovas" />
       <GlobalStyle />
     </div>
   );
