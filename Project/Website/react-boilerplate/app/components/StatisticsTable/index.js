@@ -3,7 +3,7 @@ import config from '../../utils/config';
 
 export default function StatisticsTable(props) {
   return (
-    <div className="bg-secondary box text-white">
+    <div className="bg-secondary box text-white text-center">
       <h5>{config.STATISTICS}</h5>
       {props.data.map(statistics => (
         <dl key={statistics.id} className="row">

@@ -6,7 +6,7 @@ export default function PlayerList(props) {
   return (
     <div>
       <div className="bg-secondary box">
-        <h2 className="text-white">{config.PLAYERS}</h2>
+        <h2 className="text-white text-center">{config.PLAYERS}</h2>
         {props.data.map(player => (
           <PlayerListItem
             key={player.id}

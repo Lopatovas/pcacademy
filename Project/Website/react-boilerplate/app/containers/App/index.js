@@ -32,9 +32,9 @@ export default function App() {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/register" component={CreatePage} />
-        <Route exact path="/teams" components={TeamListPage} />
-        <Route exact path="/teams/:name" components={TeamPage} />
-        <Route exact path="/players/:id" components={PlayerPage} />
+        <Route exact path="/teams" component={TeamListPage} />
+        <Route exact path="/teams/:name" component={TeamPage} />
+        <Route exact path="/players/:id" component={PlayerPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer author="Edgaras Lopatovas" />

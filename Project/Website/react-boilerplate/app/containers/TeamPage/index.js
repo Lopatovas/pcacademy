@@ -3,34 +3,27 @@ import './teamPage.css';
 import PlayerList from 'components/PlayerList';
 import TextContainer from 'components/TextContainer';
 import StatisticsTable from 'components/StatisticsTable';
+import Team from '../../../internals/mocks/TEAM_DATA.json';
 
-export default function TeamPage(props) {
+export default function TeamPage() {
   return (
     <div className="bgTeam">
-      <p />
       <div className="container">
         <div className="row">
           <div className="col">
-            <TextContainer
-              title={props.data.teamName}
-              text={props.data.teamInfo}
-            />
+            <TextContainer title={Team.teamName} text={Team.teamInfo} />
           </div>
         </div>
         <div className="row">
           <div className="col">
-            <PlayerList data={props.data.players} />
+            <PlayerList data={Team.players} />
           </div>
           <div className="col">
-            <TextContainer
-              title={props.data.teamName}
-              text={props.data.teamInfo}
-            />
-            <StatisticsTable data={props.data.statistics} />
+            <TextContainer title={Team.teamName} text={Team.teamInfo} />
+            <StatisticsTable data={Team.statistics} />
           </div>
         </div>
       </div>
-      <p />
     </div>
   );
 }

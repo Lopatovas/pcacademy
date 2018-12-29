@@ -5,7 +5,7 @@ export default function TextCard(props) {
   return (
     <div>
       <div className="bg-secondary box">
-        <h4 className="text-white title">{props.title}</h4>
+        <h4 className="text-white title text-center">{props.title}</h4>
         <p className="text-white text-left text">{props.text}</p>
       </div>
     </div>
