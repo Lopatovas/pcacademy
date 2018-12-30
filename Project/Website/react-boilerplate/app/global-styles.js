@@ -7,6 +7,16 @@ const GlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
+  .box{
+    border-radius: 25px;
+    padding-left:5px;
+    padding-bottom:5px;
+  }
+
+  .container{
+    min-height: 85vh !important;
+}
+
   body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }

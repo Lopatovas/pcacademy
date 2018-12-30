@@ -9,20 +9,16 @@
     left: 0;
 }
 
-.container{
-    min-height: 85vh !important;
-}
-
 .formBox{
     border-radius: 25px;
 }
 
-.padding-top{
+.contentPadding{
+    padding:10px 10px 10px 10px;
+}
+
+.paddingTop{
     padding-top:25px;
 }
 
-.formContent{
-    padding-bottom:2rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-}
+.buttonCurve{border-radius: 25px !important;}

@@ -1,12 +1,17 @@
 import React from 'react';
 import config from '../../utils/config';
-import './loginPage.css';
+import Style from './loginPage.css';
 
 export default function LoginUser() {
   return (
-    <div className="bgUser">
-      <div className="container padding-top">
-        <form className="bg-secondary formBox formContent text-white">
+    <div className={Style.bgUser}>
+      <div className={`container ${Style.paddingTop}`}>
+        <form
+          className={`bg-secondary 
+          ${Style.formBox} 
+          ${Style.contentPadding} 
+          text-white`}
+        >
           <div className="form-group">
             <label htmlFor="inputUsername">{config.USERNAME}</label>
             <input
@@ -23,7 +28,7 @@ export default function LoginUser() {
               id="inputLoginPassword"
             />
           </div>
-          <button type="submit" className="btn btn-dark">
+          <button type="submit" className={`${Style.buttonCurve} btn btn-dark`}>
             {config.LOGIN_BUTTON}
           </button>
         </form>

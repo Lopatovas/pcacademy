@@ -1,12 +1,16 @@
 import React from 'react';
-import './createPage.css';
+import Style from './createPage.css';
 import config from '../../utils/config';
 
 export default function CreateUser() {
   return (
-    <div className="bgUser">
-      <div className="container padding-top">
-        <form className="bg-secondary formBox formContent text-white">
+    <div className={Style.bgUser}>
+      <div className={`container ${Style.paddingTop}`}>
+        <form
+          className={`${Style.formBox} 
+          ${Style.contentPadding}
+          bg-secondary text-white`}
+        >
           <div className="form-group">
             <label htmlFor="inputUsername">{config.USERNAME}</label>
             <input className="form-control" type="text" id="inputUsername" />
@@ -27,7 +31,7 @@ export default function CreateUser() {
               {config.PASSWORD_REQUIREMENTS}
             </small>
           </div>
-          <button type="submit" className="btn btn-dark">
+          <button type="submit" className={`${Style.buttonCurve} btn btn-dark`}>
             {config.REGISTER_BUTTON}
           </button>
         </form>

@@ -1,12 +1,12 @@
 import React from 'react';
-import './playerPage.css';
 import PlayerCard from 'components/PlayerCard';
 import StatisticsTable from 'components/StatisticsTable';
+import Style from './playerPage.css';
 import PlayerData from '../../../internals/mocks/PLAYER_DATA.json';
 
-export default function PlayerPage(props) {
+export default function PlayerPage() {
   return (
-    <div className="bgPlayer">
+    <div className={Style.bgPlayer}>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -16,6 +16,7 @@ export default function PlayerPage(props) {
             <StatisticsTable data={PlayerData.statistics} />
           </div>
         </div>
+        <br />
       </div>
     </div>
   );

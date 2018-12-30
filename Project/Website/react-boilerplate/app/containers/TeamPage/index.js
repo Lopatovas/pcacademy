@@ -1,13 +1,13 @@
 import React from 'react';
-import './teamPage.css';
 import PlayerList from 'components/PlayerList';
 import TextContainer from 'components/TextContainer';
 import StatisticsTable from 'components/StatisticsTable';
+import Style from './teamPage.css';
 import Team from '../../../internals/mocks/TEAM_DATA.json';
 
 export default function TeamPage() {
   return (
-    <div className="bgTeam">
+    <div className={Style.bgTeam}>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -23,6 +23,7 @@ export default function TeamPage() {
             <StatisticsTable data={Team.statistics} />
           </div>
         </div>
+        <br />
       </div>
     </div>
   );
