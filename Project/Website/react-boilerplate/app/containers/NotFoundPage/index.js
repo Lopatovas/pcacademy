@@ -10,17 +10,22 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-
-import messages from './messages';
+import TextContainer from 'components/TextContainer';
+import config from '../../utils/config';
+import Style from './notFoundPage.css';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class NotFound extends React.PureComponent {
   render() {
     return (
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
+      <div className={Style.bg}>
+        <div className="container">
+          <TextContainer
+            title={config.NOT_FOUND_TITLE}
+            text={config.NOT_FOUND_TEXT}
+          />
+        </div>
+      </div>
     );
   }
 }
