@@ -2,7 +2,7 @@ import React from 'react';
 import PlayerList from 'components/PlayerList';
 import TextContainer from 'components/TextContainer';
 import StatisticsTable from 'components/StatisticsTable';
-import Style from './teamPage.css';
+import Style from './style.css';
 import Team from '../../../internals/mocks/TEAM_DATA.json';
 
 export default function TeamPage() {

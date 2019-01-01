@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './createPage.css';
+import Style from './style.css';
 import config from '../../utils/config';
 
 export default function CreateUser() {

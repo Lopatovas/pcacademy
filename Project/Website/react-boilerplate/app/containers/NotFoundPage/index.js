@@ -12,7 +12,7 @@
 import React from 'react';
 import TextContainer from 'components/TextContainer';
 import config from '../../utils/config';
-import Style from './notFoundPage.css';
+import Style from './style.css';
 
 /* eslint-disable react/prefer-stateless-function */
 export default class NotFound extends React.PureComponent {

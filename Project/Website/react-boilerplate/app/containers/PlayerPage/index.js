@@ -1,7 +1,7 @@
 import React from 'react';
 import PlayerCard from 'components/PlayerCard';
 import StatisticsTable from 'components/StatisticsTable';
-import Style from './playerPage.css';
+import Style from './style.css';
 import PlayerData from '../../../internals/mocks/PLAYER_DATA.json';
 
 export default function PlayerPage() {

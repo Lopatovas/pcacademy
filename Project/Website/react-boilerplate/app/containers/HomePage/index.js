@@ -1,6 +1,6 @@
 import React from 'react';
 import TextContainer from 'components/TextContainer';
-import Style from './homePage.css';
+import Style from './style.css';
 import HomePageData from '../../../internals/mocks/HOMEPAGE_DATA.json';
 
 /* eslint-disable react/prefer-stateless-function */

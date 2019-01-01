@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from 'components/Card';
-import Style from './teamListPage.css';
+import Style from './style.css';
 import Teams from '../../../internals/mocks/TEAMS_DATA.json';
 
 export default function TeamPage() {
