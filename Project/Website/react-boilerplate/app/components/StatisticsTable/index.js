@@ -1,6 +1,6 @@
 import React from 'react';
 import config from '../../utils/config';
-import Style from './statistics.css';
+import Style from './style.css';
 
 export default function StatisticsTable(props) {
   return (

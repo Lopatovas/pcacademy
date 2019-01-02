@@ -1,7 +1,7 @@
 import React from 'react';
 import config from '../../utils/config';
 import PlayerListItem from '../PlayerListItem';
-import Style from './playerList.css';
+import Style from './style.css';
 
 export default function PlayerList(props) {
   return (

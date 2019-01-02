@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './playerListItem.css';
+import Style from './style.css';
 import { Link } from 'react-router-dom';
 
 export default function PlayerListItem(props) {
