@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import config from '../../utils/config';
 import Style from './style.css';
 
@@ -17,3 +18,7 @@ export default function StatisticsTable(props) {
     </div>
   );
 }
+
+StatisticsTable.propTypes = {
+  data: PropTypes.array,
+};

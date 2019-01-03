@@ -11,11 +11,11 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
-import LoginPage from 'containers/LoginUserPage';
-import CreatePage from 'containers/CreateUserPage';
-import TeamListPage from 'containers/TeamListPage';
-import TeamPage from 'containers/TeamPage';
-import PlayerPage from 'containers/PlayerPage';
+import LoginPage from 'containers/LoginUserPage/Loadable';
+import CreatePage from 'containers/CreateUserPage/Loadable';
+import TeamListPage from 'containers/TeamListPage/Loadable';
+import TeamPage from 'containers/TeamPage/Loadable';
+import PlayerPage from 'containers/PlayerPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import Header from 'components/Header';

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import config from '../../utils/config';
 import PlayerListItem from '../PlayerListItem';
 import Style from './style.css';
@@ -19,3 +20,7 @@ export default function PlayerList(props) {
     </div>
   );
 }
+
+PlayerList.propTypes = {
+  data: PropTypes.array,
+};

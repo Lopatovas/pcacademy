@@ -1,6 +1,7 @@
 import React from 'react';
-import Style from './style.css';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Style from './style.css';
 
 export default function PlayerListItem(props) {
   return (
@@ -14,3 +15,8 @@ export default function PlayerListItem(props) {
     </div>
   );
 }
+
+PlayerListItem.propTypes = {
+  name: PropTypes.string,
+  position: PropTypes.string,
+};
