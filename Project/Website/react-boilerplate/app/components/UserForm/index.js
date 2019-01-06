@@ -6,16 +6,16 @@ export default function UserForm(props) {
   return (
     <div className={Style.bgUser}>
       <div className={`container ${Style.paddingTop}`}>
-        <form
+        <div
           className={`${Style.formBox} 
           ${Style.contentPadding}
           bg-secondary text-white`}
         >
-          {props.children}
+          <form>{props.children}</form>
           <button type="submit" className={`${Style.buttonCurve} btn btn-dark`}>
             {props.buttonText}
           </button>
-        </form>
+        </div>
       </div>
     </div>
   );
@@ -23,5 +23,5 @@ export default function UserForm(props) {
 
 UserForm.propTypes = {
   buttonText: PropTypes.string,
-  children: PropTypes.element,
+  children: PropTypes.array,
 };
