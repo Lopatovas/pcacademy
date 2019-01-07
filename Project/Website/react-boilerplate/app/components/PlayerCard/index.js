@@ -24,3 +24,8 @@ PlayerCard.propTypes = {
   name: PropTypes.string,
   info: PropTypes.string,
 };
+
+PlayerCard.defaultProps = {
+  name: 'No name provided',
+  info: 'No info provided',
+};

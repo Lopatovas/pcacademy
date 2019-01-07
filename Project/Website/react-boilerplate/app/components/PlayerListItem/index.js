@@ -17,6 +17,6 @@ export default function PlayerListItem(props) {
 }
 
 PlayerListItem.propTypes = {
-  name: PropTypes.string,
-  position: PropTypes.string,
+  name: PropTypes.string.isRequired,
+  position: PropTypes.string.isRequired,
 };

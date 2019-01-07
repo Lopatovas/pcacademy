@@ -25,3 +25,8 @@ UserForm.propTypes = {
   buttonText: PropTypes.string,
   children: PropTypes.array,
 };
+
+UserForm.defaultProps = {
+  children: <div />,
+  buttonText: '',
+};

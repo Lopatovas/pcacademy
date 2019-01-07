@@ -34,3 +34,8 @@ Card.propTypes = {
   teamName: PropTypes.string,
   teamInfo: PropTypes.string,
 };
+
+Card.defaultProps = {
+  teamName: 'No name provided',
+  teamInfo: 'No info provided',
+};

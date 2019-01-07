@@ -22,3 +22,7 @@ export default function StatisticsTable(props) {
 StatisticsTable.propTypes = {
   data: PropTypes.array,
 };
+
+StatisticsTable.defaultProps = {
+  data: [],
+};

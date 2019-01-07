@@ -3,7 +3,6 @@ import TextContainer from 'components/TextContainer';
 import Style from './style.css';
 import HomePageData from '../../../internals/mocks/HOMEPAGE_DATA.json';
 
-/* eslint-disable react/prefer-stateless-function */
 export default class HomePage extends React.PureComponent {
   render() {
     return (

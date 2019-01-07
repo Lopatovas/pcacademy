@@ -19,3 +19,8 @@ TextCard.propTypes = {
   title: PropTypes.string,
   text: PropTypes.string,
 };
+
+TextCard.defaultProps = {
+  title: 'No data provided',
+  text: 'No text provided',
+};
