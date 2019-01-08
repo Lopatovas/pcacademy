@@ -12,7 +12,11 @@ export default function UserForm(props) {
           bg-secondary text-white`}
         >
           <form>{props.children}</form>
-          <button type="submit" className={`${Style.buttonCurve} btn btn-dark`}>
+          <button
+            onClick={props.onClick}
+            type="submit"
+            className={`${Style.buttonCurve} btn btn-dark`}
+          >
             {props.buttonText}
           </button>
         </div>
@@ -24,6 +28,7 @@ export default function UserForm(props) {
 UserForm.propTypes = {
   buttonText: PropTypes.string,
   children: PropTypes.array,
+  onClick: PropTypes.func.isRequired,
 };
 
 UserForm.defaultProps = {

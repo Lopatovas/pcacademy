@@ -4,9 +4,23 @@ import Style from './style.css';
 import config from '../../utils/config';
 
 export default function CreateUser() {
+  function submit() {
+    const user = storeUserData();
+    console.log(user);
+  }
+
+  function storeUserData() {
+    const user = {
+      userName: document.getElementById('inputUsername').value,
+      email: document.getElementById('inputEmail').value,
+      password: document.getElementById('inputPassword').value,
+    };
+    return user;
+  }
+
   return (
     <div className={Style.bgUser}>
-      <UserForm buttonText={config.REGISTER_BUTTON}>
+      <UserForm buttonText={config.REGISTER_BUTTON} onClick={submit}>
         <div className="form-group">
           <label htmlFor="inputUsername">{config.USERNAME}</label>
           <input className="form-control" type="text" id="inputUsername" />
