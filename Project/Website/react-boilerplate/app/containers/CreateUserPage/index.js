@@ -1,44 +1,26 @@
 import React from 'react';
-import UserForm from 'components/UserForm';
+import UserForm from 'components/Form';
+import InputField from 'components/InputField';
 import Style from './style.css';
 import config from '../../utils/config';
 
 export default function CreateUser() {
-  function submit() {
-    const user = storeUserData();
-    console.log(user);
-  }
-
-  function storeUserData() {
-    const user = {
-      userName: document.getElementById('inputUsername').value,
-      email: document.getElementById('inputEmail').value,
-      password: document.getElementById('inputPassword').value,
-    };
-    return user;
+  function submit(event) {
+    event.preventDefault();
+    console.log(event.target.parentElement.elements);
   }
 
   return (
     <div className={Style.bgUser}>
       <UserForm buttonText={config.REGISTER_BUTTON} onClick={submit}>
-        <div className="form-group">
-          <label htmlFor="inputUsername">{config.USERNAME}</label>
-          <input className="form-control" type="text" id="inputUsername" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="inputEmail">{config.EMAIL}</label>
-          <input className="form-control" type="email" id="inputEmail" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="inputPassword">{config.PASSWORD}</label>
-          <input
-            className="form-control"
-            type="password"
-            id="inputPassword"
-            aria-describedby="passwordHelpInline"
-          />
-          <small id="passwordHelpInline">{config.PASSWORD_REQUIREMENTS}</small>
-        </div>
+        <InputField label={config.USERNAME} name="username" />
+        <InputField label={config.EMAIL} name="email" type="email" />
+        <InputField
+          label={config.PASSWORD}
+          name="password"
+          helperText={config.PASSWORD_REQUIREMENTS}
+          type="password"
+        />
       </UserForm>
     </div>
   );
