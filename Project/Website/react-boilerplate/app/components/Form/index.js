@@ -10,6 +10,7 @@ export default class Form extends React.Component {
     for (let i = 0; i < form.elements.length - 1; i += 1) {
       input[form.elements[i].name] = form.elements[i].value;
     }
+    console.log(input);
   }
 
   render() {
