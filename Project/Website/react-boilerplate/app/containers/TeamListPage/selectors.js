@@ -6,3 +6,4 @@ const makeSelectTeamListPage = () =>
   createSelector(selectTeamListPage, subState => subState.toJS());
 
 export default makeSelectTeamListPage;
+export { selectTeamListPage };

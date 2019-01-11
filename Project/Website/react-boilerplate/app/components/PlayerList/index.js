@@ -21,6 +21,7 @@ export default function PlayerList(props) {
       </div>
     );
   }
+  return <div />;
 }
 
 PlayerList.propTypes = {
