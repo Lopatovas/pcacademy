@@ -1,7 +1,8 @@
 import { fromJS } from 'immutable';
-import { SET_PLAYERS_DATA } from './constants';
+import { SET_PLAYERS_DATA, SET_TEAM_DATA } from './constants';
 
 const initialState = fromJS({
+  team: {},
   players: [],
 });
 
@@ -9,6 +10,8 @@ export default function playersReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PLAYERS_DATA:
       return state.set('players', action.players);
+    case SET_TEAM_DATA:
+      return state.set('team', action.team);
     default:
       return state;
   }

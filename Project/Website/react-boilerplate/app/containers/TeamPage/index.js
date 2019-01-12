@@ -9,22 +9,23 @@ import PropTypes from 'prop-types';
 import Team from '../../../internals/mocks/TEAM_DATA.json';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { setPlayers } from './actions';
+import { setPlayers, setTeam } from './actions';
 import reducer from './reducer';
 
 class TeamPage extends React.Component {
   componentDidMount() {
     this.props.setPlayers(Team.players);
+    this.props.setTeam(Team);
   }
 
   render() {
-    const { players } = this.props;
+    const { players, team } = this.props;
     return (
       <div className={Style.bgTeam}>
         <div className="container">
           <div className="row">
             <div className="col">
-              <TextContainer title={Team.teamName} text={Team.teamInfo} />
+              <TextContainer title={team.teamName} text={team.teamInfo} />
             </div>
           </div>
           <div className="row">
@@ -32,8 +33,8 @@ class TeamPage extends React.Component {
               <PlayerList data={players} />
             </div>
             <div className="col">
-              <TextContainer title={Team.teamName} text={Team.teamInfo} />
-              <StatisticsTable data={Team.statistics} />
+              <TextContainer title={team.teamName} text={team.teamInfo} />
+              <StatisticsTable data={team.statistics} />
             </div>
           </div>
           <br />
@@ -46,6 +47,8 @@ class TeamPage extends React.Component {
 TeamPage.propTypes = {
   players: PropTypes.array.isRequired,
   setPlayers: PropTypes.func.isRequired,
+  team: PropTypes.object.isRequired,
+  setTeam: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = makeSelect();
@@ -53,6 +56,7 @@ const mapStateToProps = makeSelect();
 function mapDispatchToProps(dispatch) {
   return {
     setPlayers: players => dispatch(setPlayers(players)),
+    setTeam: team => dispatch(setTeam(team)),
   };
 }
 

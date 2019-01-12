@@ -1,23 +1,69 @@
 import React from 'react';
 import PlayerCard from 'components/PlayerCard';
 import StatisticsTable from 'components/StatisticsTable';
-import Style from './style.css';
+import injectReducer from 'utils/injectReducer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import PlayerData from '../../../internals/mocks/PLAYER_DATA.json';
+import Style from './style.css';
+import makeSelect from './selectors';
+import { setPlayer } from './actions';
+import reducer from './reducer';
 
-export default function PlayerPage() {
-  return (
-    <div className={Style.bgPlayer}>
-      <div className="container">
-        <div className="row">
-          <div className="col">
-            <PlayerCard name={PlayerData.name} info={PlayerData.info} />
+class PlayerPage extends React.Component {
+  componentDidMount() {
+    this.props.setPlayer(PlayerData);
+  }
+
+  render() {
+    const { player } = this.props;
+    return (
+      <div className={Style.bgPlayer}>
+        <div className="container">
+          <div className="row">
+            <div className="col">
+              <PlayerCard name={player.name} info={player.info} />
+            </div>
+            <div className="col">
+              <StatisticsTable data={player.statistics} />
+            </div>
           </div>
-          <div className="col">
-            <StatisticsTable data={PlayerData.statistics} />
-          </div>
+          <br />
         </div>
-        <br />
       </div>
-    </div>
-  );
+    );
+  }
 }
+
+PlayerPage.propTypes = {
+  player: PropTypes.object,
+  setPlayer: PropTypes.func.isRequired,
+};
+
+PlayerPage.defaultProps = {
+  player: [],
+};
+
+const mapStateToProps = makeSelect();
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setPlayer: player => dispatch(setPlayer(player)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({
+  key: 'playerPage',
+  reducer,
+});
+
+export default compose(
+  withReducer,
+  withConnect,
+)(PlayerPage);
