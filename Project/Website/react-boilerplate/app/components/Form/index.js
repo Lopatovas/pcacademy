@@ -1,16 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import injectReducer from 'utils/injectReducer';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import Style from './style.css';
+import makeSelect from './selectors';
+import { getInputs } from './actions';
+import reducer from './reducer';
 
-export default class Form extends React.Component {
+class Form extends React.Component {
   handleSubmit(event) {
+    // bug
     event.preventDefault();
     const form = event.target.parentElement;
     const input = {};
     for (let i = 0; i < form.elements.length - 1; i += 1) {
       input[form.elements[i].name] = form.elements[i].value;
     }
-    console.log(input);
+    this.props.getInputs(input);
+    console.log(this.props);
   }
 
   render() {
@@ -38,9 +46,33 @@ export default class Form extends React.Component {
 Form.propTypes = {
   buttonText: PropTypes.string,
   children: PropTypes.array,
+  getInputs: PropTypes.func.isRequired,
 };
 
 Form.defaultProps = {
   children: <div />,
   buttonText: '',
 };
+
+const mapStateToProps = makeSelect();
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getInputs: inputs => dispatch(getInputs(inputs)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({
+  key: 'form',
+  reducer,
+});
+
+export default compose(
+  withReducer,
+  withConnect,
+)(Form);
