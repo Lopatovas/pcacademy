@@ -9,8 +9,12 @@ import { getInputs } from './actions';
 import reducer from './reducer';
 
 class Form extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
   handleSubmit(event) {
-    // bug
     event.preventDefault();
     const form = event.target.parentElement;
     const input = {};
@@ -18,7 +22,6 @@ class Form extends React.Component {
       input[form.elements[i].name] = form.elements[i].value;
     }
     this.props.getInputs(input);
-    console.log(this.props);
   }
 
   render() {
