@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 export default function FixtureList(props) {
   return (
     <div>
-      <table className="table table-hover table-sm bg-secondary text-center">
+      <table className="table table-hover table-sm bg-secondary text-center text-white">
         <thead>
           <tr>
             <th colSpan="3">{props.tableName}</th>
