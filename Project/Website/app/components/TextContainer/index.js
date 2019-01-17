@@ -9,7 +9,7 @@ export default function TextCard(props) {
         <h4 className={`${Style.title} text-white text-center`}>
           {props.title}
         </h4>
-        <p className="text-white text-left text">{props.text}</p>
+        <p className={`text-white text-left ${Style.text}`}>{props.text}</p>
       </div>
     </div>
   );

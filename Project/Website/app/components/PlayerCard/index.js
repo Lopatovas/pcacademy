@@ -7,7 +7,7 @@ export default function PlayerCard(props) {
     <div className={Style.paddingTop}>
       <div className="box bg-secondary text-white">
         <img
-          className="card-img-top"
+          className={`${Style.imgScaling} card-img-top`}
           src="https://via.placeholder.com/50"
           alt="Player"
         />

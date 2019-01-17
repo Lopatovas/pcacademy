@@ -8,6 +8,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .box{
+    border: 2px solid #424242;
     border-radius: 25px;
     padding-left:5px;
     padding-bottom:5px;
