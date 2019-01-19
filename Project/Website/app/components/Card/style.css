@@ -7,3 +7,12 @@
 .paddingTop{
     padding-top: 15px;
 }
+
+.imageStyle{
+    height: auto; 
+    width: auto;
+    min-width: 150px; 
+    min-height: 150px; 
+    max-width: 200px; 
+    max-height: 200px;
+}

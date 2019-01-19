@@ -6,16 +6,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Style from './style.css';
-import Teams from '../../../internals/mocks/TEAMS_DATA.json';
 import makeSelect from './selectors';
-import { setTeams, getTeams } from './actions';
+import { getTeams } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
-class TeamPage extends React.Component {
+class TeamListPage extends React.Component {
   componentDidMount() {
     this.props.getTeams();
-    this.props.setTeams(Teams);
   }
 
   render() {
@@ -23,13 +21,23 @@ class TeamPage extends React.Component {
     return (
       <div className={Style.bgTeam}>
         <div className="container">
-          {teams.map(team => (
-            <Card
-              key={team.id}
-              teamName={team.teamName}
-              teamInfo={team.teamInfo}
-            />
-          ))}
+          {teams.map(
+            team =>
+              team.name === 'England' ? null : (
+                <Card
+                  key={team.id}
+                  id={team.id}
+                  teamName={team.name}
+                  teamInfo={[
+                    `Founded: ${team.founded}`,
+                    `Colors: ${team.clubColors}`,
+                    `Stadium: ${team.venue}`,
+                    `Website: ${team.website}`,
+                  ]}
+                  imgUrl={team.crestUrl}
+                />
+              ),
+          )}
           <br />
         </div>
       </div>
@@ -37,9 +45,8 @@ class TeamPage extends React.Component {
   }
 }
 
-TeamPage.propTypes = {
+TeamListPage.propTypes = {
   teams: PropTypes.array.isRequired,
-  setTeams: PropTypes.func.isRequired,
   getTeams: PropTypes.func.isRequired,
 };
 
@@ -48,7 +55,6 @@ const mapStateToProps = makeSelect();
 function mapDispatchToProps(dispatch) {
   return {
     getTeams: () => dispatch(getTeams()),
-    setTeams: teams => dispatch(setTeams(teams)),
   };
 }
 
@@ -64,4 +70,4 @@ export default compose(
   withReducer,
   withSaga,
   withConnect,
-)(TeamPage);
+)(TeamListPage);

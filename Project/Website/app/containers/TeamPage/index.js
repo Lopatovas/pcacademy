@@ -3,29 +3,31 @@ import PlayerList from 'components/PlayerList';
 import TextContainer from 'components/TextContainer';
 import StatisticsTable from 'components/StatisticsTable';
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Team from '../../../internals/mocks/TEAM_DATA.json';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { setPlayers, setTeam } from './actions';
+import { getTeam, getStanding } from './actions';
 import reducer from './reducer';
+import saga from './saga';
 
 class TeamPage extends React.Component {
   componentDidMount() {
-    this.props.setPlayers(Team.players);
-    this.props.setTeam(Team);
+    this.props.getTeam(this.props.match.params.name);
+    this.props.getStanding();
   }
 
   render() {
+    console.log(this.props);
     const { players, team } = this.props;
     return (
       <div className={Style.bgTeam}>
         <div className="container">
           <div className="row">
             <div className="col">
-              <TextContainer title={team.teamName} text={team.teamInfo} />
+              <TextContainer title={team.name} text={team.teamInfo} />
             </div>
           </div>
           <div className="row">
@@ -46,17 +48,18 @@ class TeamPage extends React.Component {
 
 TeamPage.propTypes = {
   players: PropTypes.array.isRequired,
-  setPlayers: PropTypes.func.isRequired,
   team: PropTypes.object.isRequired,
-  setTeam: PropTypes.func.isRequired,
+  getTeam: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  getStanding: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = makeSelect();
 
 function mapDispatchToProps(dispatch) {
   return {
-    setPlayers: players => dispatch(setPlayers(players)),
-    setTeam: team => dispatch(setTeam(team)),
+    getTeam: id => dispatch(getTeam(id)),
+    getStanding: () => dispatch(getStanding()),
   };
 }
 
@@ -65,12 +68,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({
-  key: 'teamPage',
-  reducer,
-});
+const withReducer = injectReducer({ key: 'teamPage', reducer });
+const withSaga = injectSaga({ key: 'teamPage', saga });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(TeamPage);

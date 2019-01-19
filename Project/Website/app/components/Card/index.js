@@ -5,6 +5,11 @@ import Style from './style.css';
 import config from '../../utils/config';
 
 export default function Card(props) {
+  let index = 0;
+  function createIndex() {
+    index += 1;
+    return index;
+  }
   return (
     <div className={Style.paddingTop}>
       <div className={`${Style.card} card text-white bg-secondary text-center`}>
@@ -13,15 +18,23 @@ export default function Card(props) {
         </div>
         <div className="card-body row">
           <div className="col">
-            <img src="https://via.placeholder.com/250" alt="Team logo" />
+            <img
+              className={Style.imageStyle}
+              src={props.imgUrl}
+              alt="Team logo"
+            />
           </div>
           <div className="col">
-            <p className="text-white card-text">{props.teamInfo}</p>
+            {props.teamInfo.map(info => (
+              <p key={createIndex()} className="text-white card-text">
+                {info}
+              </p>
+            ))}
           </div>
         </div>
         <Link
           className={`${Style.buttonCurve} btn btn-dark mb-2 mx-5`}
-          to={`teams/${props.teamName}`}
+          to={`teams/${props.id}`}
         >
           {config.TEAM_CARD_BUTTON}
         </Link>
@@ -32,10 +45,14 @@ export default function Card(props) {
 
 Card.propTypes = {
   teamName: PropTypes.string,
-  teamInfo: PropTypes.string,
+  teamInfo: PropTypes.array,
+  imgUrl: PropTypes.string,
+  id: PropTypes.number,
 };
 
 Card.defaultProps = {
   teamName: 'No name provided',
-  teamInfo: 'No info provided',
+  teamInfo: [],
+  imgUrl: 'https://via.placeholder.com/250',
+  id: -1,
 };
