@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from 'components/Card';
+import TeamListItem from 'components/TeamListItem';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
@@ -13,6 +13,7 @@ import saga from './saga';
 
 class TeamListPage extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getTeams();
   }
 
@@ -24,7 +25,7 @@ class TeamListPage extends React.Component {
           {teams.map(
             team =>
               team.name === 'England' ? null : (
-                <Card
+                <TeamListItem
                   key={team.id}
                   id={team.id}
                   teamName={team.name}

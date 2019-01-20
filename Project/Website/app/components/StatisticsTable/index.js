@@ -8,21 +8,16 @@ export default function StatisticsTable(props) {
     <div className={Style.paddingTop}>
       <div className="bg-secondary box text-white text-center">
         <h5>{config.STATISTICS}</h5>
-        {props.data.map(statistics => (
-          <dl key={statistics.id} className="row">
-            <dt className="col">{statistics.key}</dt>
-            <dd className="col">{statistics.value}</dd>
-          </dl>
-        ))}
+        {props.children}
       </div>
     </div>
   );
 }
 
 StatisticsTable.propTypes = {
-  data: PropTypes.array,
+  children: PropTypes.array,
 };
 
 StatisticsTable.defaultProps = {
-  data: [],
+  children: [],
 };

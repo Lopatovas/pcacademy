@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import FixtureList from 'components/FixtureList';
 import PropTypes from 'prop-types';
 import Style from './style.css';
-import HomePageData from '../../../internals/mocks/HOMEPAGE_DATA.json';
 import makeSelect from './selectors';
 import { setFixtures } from './actions';
 import reducer from './reducer';
@@ -22,13 +21,12 @@ class HomePage extends React.Component {
       <div>
         <div className={Style.bg}>
           <div className="container">
-            {HomePageData.map(text => (
-              <TextContainer
-                key={text.id}
-                title={text.title}
-                text={text.text}
-              />
-            ))}
+            <TextContainer
+              title="Greetings"
+              text="This site is designed to help people find valuable information 
+              about the events that are happening currently at the English Premier League. 
+              You can find information about the participating teams and their performance."
+            />
             <br />
             <FixtureList tableName="Fixtures" fixtures={this.props.fixtures} />
             <br />

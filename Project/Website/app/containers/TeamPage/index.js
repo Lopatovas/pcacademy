@@ -1,6 +1,7 @@
 import React from 'react';
 import PlayerList from 'components/PlayerList';
-import TextContainer from 'components/TextContainer';
+import Card from 'components/Card';
+import StatisticsField from 'components/StatisticsField';
 import StatisticsTable from 'components/StatisticsTable';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -15,28 +16,48 @@ import saga from './saga';
 
 class TeamPage extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getTeam(this.props.match.params.name);
-    this.props.getStanding();
+    this.props.getStanding(this.props.match.params.name);
   }
 
   render() {
-    console.log(this.props);
-    const { players, team } = this.props;
+    const { players, team, standing } = this.props;
     return (
       <div className={Style.bgTeam}>
         <div className="container">
           <div className="row">
             <div className="col">
-              <TextContainer title={team.name} text={team.teamInfo} />
+              <Card
+                pictureUrl={team.crestUrl}
+                title={team.name}
+                info={`${team.name} was found in ${
+                  team.founded
+                }. The clubs colors are ${team.clubColors}`}
+              />
+              <StatisticsTable>
+                <StatisticsField name="Position" value={standing.position} />
+                <StatisticsField name="Points" value={standing.points} />
+                <StatisticsField
+                  name="Games played"
+                  value={standing.playedGames}
+                />
+                <StatisticsField name="Won" value={standing.won} />
+                <StatisticsField name="Lost" value={standing.lost} />
+                <StatisticsField name="Draw" value={standing.draw} />
+                <StatisticsField name="Goals for" value={standing.goalsFor} />
+                <StatisticsField
+                  name="Goals against"
+                  value={standing.goalsAgainst}
+                />
+                <StatisticsField
+                  name="Goal difference"
+                  value={standing.goalDifference}
+                />
+              </StatisticsTable>
             </div>
-          </div>
-          <div className="row">
             <div className="col">
               <PlayerList data={players} />
-            </div>
-            <div className="col">
-              <TextContainer title={team.teamName} text={team.teamInfo} />
-              <StatisticsTable data={team.statistics} />
             </div>
           </div>
           <br />
@@ -49,6 +70,7 @@ class TeamPage extends React.Component {
 TeamPage.propTypes = {
   players: PropTypes.array.isRequired,
   team: PropTypes.object.isRequired,
+  standing: PropTypes.object.isRequired,
   getTeam: PropTypes.func.isRequired,
   match: PropTypes.object.isRequired,
   getStanding: PropTypes.func.isRequired,
@@ -59,7 +81,7 @@ const mapStateToProps = makeSelect();
 function mapDispatchToProps(dispatch) {
   return {
     getTeam: id => dispatch(getTeam(id)),
-    getStanding: () => dispatch(getStanding()),
+    getStanding: teamId => dispatch(getStanding(teamId)),
   };
 }
 

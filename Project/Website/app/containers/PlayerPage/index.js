@@ -1,5 +1,5 @@
 import React from 'react';
-import PlayerCard from 'components/PlayerCard';
+import Card from 'components/Card';
 import StatisticsTable from 'components/StatisticsTable';
 import injectReducer from 'utils/injectReducer';
 import { compose } from 'redux';
@@ -23,7 +23,7 @@ class PlayerPage extends React.Component {
         <div className="container">
           <div className="row">
             <div className="col">
-              <PlayerCard name={player.name} info={player.info} />
+              <Card name={player.name} info={player.info} />
             </div>
             <div className="col">
               <StatisticsTable data={player.statistics} />

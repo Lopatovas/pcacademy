@@ -11,14 +11,14 @@ const initialState = fromJS({
   standing: {},
 });
 
-export default function playersReducer(state = initialState, action) {
+export default function teamReducer(state = initialState, action) {
   switch (action.type) {
     case SET_PLAYERS_DATA:
       return state.set('players', action.players);
     case SET_TEAM_DATA:
       return state.set('team', action.team);
     case SET_STANDING_DATA:
-      return state.set('standing', action.standings);
+      return state.set('standing', action.standing);
     default:
       return state;
   }

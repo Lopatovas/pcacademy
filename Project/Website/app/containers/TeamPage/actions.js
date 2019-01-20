@@ -27,9 +27,10 @@ export function getTeam(teamId) {
   };
 }
 
-export function getStanding() {
+export function getStanding(teamId) {
   return {
     type: GET_STANDING_DATA,
+    teamId,
   };
 }
 

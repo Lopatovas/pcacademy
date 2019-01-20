@@ -5,7 +5,7 @@ const initialState = fromJS({
   teams: [],
 });
 
-export default function teamsReducer(state = initialState, action) {
+export default function teamsListReducer(state = initialState, action) {
   switch (action.type) {
     case SET_TEAMS_DATA:
       return state.set('teams', action.teams);

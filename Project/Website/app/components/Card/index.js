@@ -1,58 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Style from './style.css';
-import config from '../../utils/config';
 
 export default function Card(props) {
-  let index = 0;
-  function createIndex() {
-    index += 1;
-    return index;
-  }
   return (
     <div className={Style.paddingTop}>
-      <div className={`${Style.card} card text-white bg-secondary text-center`}>
-        <div className={`${Style.cardHeader} card-header bg-dark`}>
-          {props.teamName}
+      <div className="box bg-secondary text-white">
+        <img
+          className={`${Style.imgScaling} card-img-top`}
+          src={props.pictureUrl}
+          alt="Logo"
+        />
+        <div className="card-body">
+          <h5 className="card-title text-center">{props.title}</h5>
+          <p className="card-text">{props.info}</p>
         </div>
-        <div className="card-body row">
-          <div className="col">
-            <img
-              className={Style.imageStyle}
-              src={props.imgUrl}
-              alt="Team logo"
-            />
-          </div>
-          <div className="col">
-            {props.teamInfo.map(info => (
-              <p key={createIndex()} className="text-white card-text">
-                {info}
-              </p>
-            ))}
-          </div>
-        </div>
-        <Link
-          className={`${Style.buttonCurve} btn btn-dark mb-2 mx-5`}
-          to={`teams/${props.id}`}
-        >
-          {config.TEAM_CARD_BUTTON}
-        </Link>
       </div>
     </div>
   );
 }
 
 Card.propTypes = {
-  teamName: PropTypes.string,
-  teamInfo: PropTypes.array,
-  imgUrl: PropTypes.string,
-  id: PropTypes.number,
+  title: PropTypes.string,
+  info: PropTypes.string,
+  pictureUrl: PropTypes.string,
 };
 
 Card.defaultProps = {
-  teamName: 'No name provided',
-  teamInfo: [],
-  imgUrl: 'https://via.placeholder.com/250',
-  id: -1,
+  title: 'No title provided',
+  info: 'No info provided',
+  pictureUrl: 'https://via.placeholder.com/50',
 };
