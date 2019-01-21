@@ -13,6 +13,7 @@ import Fixtures from '../../../internals/mocks/FIXTURES.json';
 
 class HomePage extends React.Component {
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.setFixtures(Fixtures);
   }
 
