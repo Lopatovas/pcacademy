@@ -1,15 +1,30 @@
 import React from 'react';
 import UserForm from 'components/Form';
 import InputField from 'components/InputField';
+import PropTypes from 'prop-types';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
 import Style from './style.css';
 import config from '../../utils/config';
+import makeSelect from './selectors';
+import { pushUser } from './actions';
+import reducer from './reducer';
+import saga from './saga';
 
-export default class CreateUser extends React.Component {
+class CreateUser extends React.Component {
+  componentDidMount() {
+    const data = { userName: 'asd', password: 'asd', email: 'asd' };
+    this.props.pushUser(data);
+  }
+
   handleSubmit(data) {
-    console.log(data);
+    this.props.pushUser(data);
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className={Style.bgUser}>
         <UserForm
@@ -29,3 +44,29 @@ export default class CreateUser extends React.Component {
     );
   }
 }
+
+CreateUser.propTypes = {
+  pushUser: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = makeSelect();
+
+function mapDispatchToProps(dispatch) {
+  return {
+    pushUser: data => dispatch(pushUser(data)),
+  };
+}
+
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
+
+const withReducer = injectReducer({ key: 'createUserPage', reducer });
+const withSaga = injectSaga({ key: 'createUserPage', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(CreateUser);

@@ -18,8 +18,8 @@ export default function FixtureList(props) {
         <tbody>
           {props.fixtures.map(match => (
             <tr key={match.id} className={Style.bottomLine}>
-              <td>{match.homeTeam}</td>
-              <td>{match.awayTeam}</td>
+              <td>{match.homeTeam.name}</td>
+              <td>{match.awayTeam.name}</td>
               <td>{match.utcDate}</td>
             </tr>
           ))}

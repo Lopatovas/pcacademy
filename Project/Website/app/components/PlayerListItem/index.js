@@ -7,7 +7,7 @@ export default function PlayerListItem(props) {
   return (
     <div>
       <div className={`text-left ${Style.playerCard}`}>
-        <Link className={Style.playerItem} to={`/players/${props.name}`}>
+        <Link className={Style.playerItem} to={`/players/${props.playerId}`}>
           <h5 className="text-white">{props.name}</h5>
           <p className="text-white">{props.position}</p>
         </Link>
@@ -17,6 +17,7 @@ export default function PlayerListItem(props) {
 }
 
 PlayerListItem.propTypes = {
+  playerId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
 };

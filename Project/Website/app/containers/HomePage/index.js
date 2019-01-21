@@ -1,20 +1,22 @@
 import React from 'react';
 import TextContainer from 'components/TextContainer';
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import FixtureList from 'components/FixtureList';
 import PropTypes from 'prop-types';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { setFixtures } from './actions';
+import { setFixtures, getTable, getFixtures } from './actions';
 import reducer from './reducer';
-import Fixtures from '../../../internals/mocks/FIXTURES.json';
+import saga from './saga';
 
 class HomePage extends React.Component {
   componentDidMount() {
     window.scrollTo(0, 0);
-    this.props.setFixtures(Fixtures);
+    this.props.getTable();
+    this.props.getFixtures();
   }
 
   render() {
@@ -39,7 +41,8 @@ class HomePage extends React.Component {
 }
 
 HomePage.propTypes = {
-  setFixtures: PropTypes.func.isRequired,
+  getTable: PropTypes.func.isRequired,
+  getFixtures: PropTypes.func.isRequired,
   fixtures: PropTypes.array.isRequired,
 };
 
@@ -47,6 +50,8 @@ const mapStateToProps = makeSelect();
 
 function mapDispatchToProps(dispatch) {
   return {
+    getTable: () => dispatch(getTable()),
+    getFixtures: () => dispatch(getFixtures()),
     setFixtures: fixtures => dispatch(setFixtures(fixtures)),
   };
 }
@@ -56,12 +61,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({
-  key: 'homePage',
-  reducer,
-});
+const withReducer = injectReducer({ key: 'homePage', reducer });
+const withSaga = injectSaga({ key: 'homePage', saga });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(HomePage);

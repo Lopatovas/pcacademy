@@ -1,32 +1,37 @@
 import React from 'react';
 import Card from 'components/Card';
-import StatisticsTable from 'components/StatisticsTable';
 import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import PlayerData from '../../../internals/mocks/PLAYER_DATA.json';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { setPlayer } from './actions';
+import { getPlayer } from './actions';
 import reducer from './reducer';
+import saga from './saga';
 
 class PlayerPage extends React.Component {
   componentDidMount() {
-    this.props.setPlayer(PlayerData);
+    this.props.getPlayer(this.props.match.params.id);
   }
 
   render() {
+    console.log(this.props);
     const { player } = this.props;
     return (
       <div className={Style.bgPlayer}>
         <div className="container">
-          <div className="row">
-            <div className="col">
-              <Card name={player.name} info={player.info} />
-            </div>
-            <div className="col">
-              <StatisticsTable data={player.statistics} />
+          <div>
+            <div>
+              <Card
+                title={player.name}
+                info={`${player.name} is a football player from ${
+                  player.nationality
+                }. He was born in ${player.dateOfBirth}. He is playing in the ${
+                  player.position
+                } position. His shirt number is ${player.shirtNumber}.`}
+              />
             </div>
           </div>
           <br />
@@ -38,7 +43,8 @@ class PlayerPage extends React.Component {
 
 PlayerPage.propTypes = {
   player: PropTypes.object,
-  setPlayer: PropTypes.func.isRequired,
+  match: PropTypes.object.isRequired,
+  getPlayer: PropTypes.func.isRequired,
 };
 
 PlayerPage.defaultProps = {
@@ -49,7 +55,7 @@ const mapStateToProps = makeSelect();
 
 function mapDispatchToProps(dispatch) {
   return {
-    setPlayer: player => dispatch(setPlayer(player)),
+    getPlayer: playerId => dispatch(getPlayer(playerId)),
   };
 }
 
@@ -58,12 +64,11 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({
-  key: 'playerPage',
-  reducer,
-});
+const withReducer = injectReducer({ key: 'playerPage', reducer });
+const withSaga = injectSaga({ key: 'playerPage', saga });
 
 export default compose(
   withReducer,
+  withSaga,
   withConnect,
 )(PlayerPage);

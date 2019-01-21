@@ -15,6 +15,7 @@ export default function PlayerList(props) {
               player.role === 'PLAYER' ? (
                 <PlayerListItem
                   key={player.id}
+                  playerId={player.id}
                   name={player.name}
                   position={player.position}
                 />
