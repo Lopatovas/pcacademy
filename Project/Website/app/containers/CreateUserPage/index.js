@@ -14,24 +14,18 @@ import reducer from './reducer';
 import saga from './saga';
 
 class CreateUser extends React.Component {
-  componentDidMount() {
-    const data = { userName: 'asd', password: 'asd', email: 'asd' };
+  handleSubmit = data => {
     this.props.pushUser(data);
-  }
-
-  handleSubmit(data) {
-    this.props.pushUser(data);
-  }
+  };
 
   render() {
-    console.log(this.props);
     return (
       <div className={Style.bgUser}>
         <UserForm
           buttonText={config.REGISTER_BUTTON}
-          onClick={this.handleSubmit}
+          onSubmit={this.handleSubmit}
         >
-          <InputField label={config.USERNAME} name="username" />
+          <InputField label={config.USERNAME} name="userName" />
           <InputField label={config.EMAIL} name="email" type="email" />
           <InputField
             label={config.PASSWORD}

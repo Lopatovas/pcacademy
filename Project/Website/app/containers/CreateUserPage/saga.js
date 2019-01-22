@@ -7,7 +7,7 @@ function* createUser(params) {
   console.log(result);
   yield put({
     type: SET_USER,
-    user: result.user,
+    user: result.data,
   });
 }
 

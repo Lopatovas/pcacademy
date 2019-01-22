@@ -7,6 +7,7 @@ const team = require('./routes/team');
 const user = require('./routes/user');
 const passport = require('passport');
 const errorHandler = require('./errorHandler');
+const cors = require('cors');
 
 const config_test = require('./config_test');
 
@@ -24,6 +25,7 @@ mongoose.Promise = global.Promise;
 
 const app = express();
 
+app.use(cors({origin: config.CORS_ENABLED_URL}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/players', passport.authenticate('jwt', {session: false}), player);

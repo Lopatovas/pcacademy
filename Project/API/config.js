@@ -4,5 +4,6 @@ module.exports = {
     JWT_SECRET: 'naistrai :(',
     JWT_HEADER_KEY: 'token',
     MIN_PLAYER_AGE: 16,
-    MAX_PLAYER_AGE: 45
+    MAX_PLAYER_AGE: 45,
+    CORS_ENABLED_URL: 'http://localhost:3000'
 }

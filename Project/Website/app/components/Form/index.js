@@ -1,52 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { reduxForm } from 'redux-form/immutable';
 import Style from './style.css';
 
-export default class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    const form = event.target.parentElement;
-    const input = {};
-    for (let i = 0; i < form.elements.length - 1; i += 1) {
-      input[form.elements[i].name] = form.elements[i].value;
-    }
-    this.props.onClick(input);
-  }
-
-  render() {
-    return (
-      <div className={`container ${Style.paddingTop}`}>
-        <form
-          className={`${Style.formBox} 
+function Form(props) {
+  const { handleSubmit, children, buttonText } = props;
+  return (
+    <div className={`container ${Style.paddingTop}`}>
+      <form
+        className={`${Style.formBox} 
             ${Style.contentPadding}
             bg-secondary text-white`}
-        >
-          {this.props.children}
-          <button
-            onClick={this.handleSubmit}
-            type="submit"
-            className={`${Style.buttonCurve} btn btn-dark`}
-          >
-            {this.props.buttonText}
-          </button>
-        </form>
-      </div>
-    );
-  }
+        onSubmit={handleSubmit}
+      >
+        {children}
+        <button type="submit" className={`${Style.buttonCurve} btn btn-dark`}>
+          {buttonText}
+        </button>
+      </form>
+    </div>
+  );
 }
 
 Form.propTypes = {
   buttonText: PropTypes.string,
   children: PropTypes.array,
-  onClick: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
 };
 
 Form.defaultProps = {
   children: <div />,
   buttonText: '',
 };
+
+export default reduxForm({
+  form: 'form',
+})(Form);

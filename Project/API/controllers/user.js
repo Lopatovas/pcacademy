@@ -22,7 +22,7 @@ exports.login = async function(request, response){
                 }
                 const body = {_id: user._id, userName: user.userName};
                 const token = jwt.sign({user: body}, CONFIG.JWT_SECRET);
-                response.json({token});
+                response.json({body, token});
             });
 
         } catch(err){

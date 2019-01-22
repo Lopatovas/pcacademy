@@ -3,7 +3,6 @@ import CONFIG from '../config';
 import ENDPOINTS from '../endpoints/user';
 
 export function create(user) {
-  console.log(user);
   return axios.post(`${CONFIG.USER_URL}${ENDPOINTS.CREATE}`, {
     userName: user.userName,
     email: user.email,

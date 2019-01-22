@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Field } from 'redux-form/immutable';
 
 export default function InputField(props) {
   return (
     <div className="form-group">
       <label htmlFor={props.name}>{props.label}</label>
-      <input className="form-control" type={props.type} name={props.name} />
+      <Field
+        component="input"
+        className="form-control"
+        type={props.type}
+        name={props.name}
+      />
       {props.helperText.length > 0 ? <small>{props.helperText}</small> : null}
     </div>
   );

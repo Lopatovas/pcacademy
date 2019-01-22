@@ -17,7 +17,6 @@ class PlayerPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { player } = this.props;
     return (
       <div className={Style.bgPlayer}>
