@@ -4,7 +4,7 @@ import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import FixtureList from 'components/FixtureList';
+import ChampionshipList from 'components/ChampionshipList';
 import PropTypes from 'prop-types';
 import Style from './style.css';
 import makeSelect from './selectors';
@@ -20,6 +20,7 @@ class HomePage extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <div className={Style.bg}>
@@ -31,7 +32,7 @@ class HomePage extends React.Component {
               You can find information about the participating teams and their performance."
             />
             <br />
-            <FixtureList tableName="Fixtures" fixtures={this.props.fixtures} />
+            <ChampionshipList tableName="Standings" teams={this.props.table} />
             <br />
           </div>
         </div>
@@ -43,7 +44,7 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
   getTable: PropTypes.func.isRequired,
   getFixtures: PropTypes.func.isRequired,
-  fixtures: PropTypes.array.isRequired,
+  table: PropTypes.array.isRequired,
 };
 
 const mapStateToProps = makeSelect();

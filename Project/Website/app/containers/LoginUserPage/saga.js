@@ -4,7 +4,6 @@ import * as userService from '../../api/services/user';
 
 function* loginUser(params) {
   const result = yield call(userService.login, params.user);
-  console.log(result);
   yield put({
     type: SET_USER,
     user: result.data,

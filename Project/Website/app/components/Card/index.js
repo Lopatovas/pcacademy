@@ -29,5 +29,5 @@ Card.propTypes = {
 Card.defaultProps = {
   title: 'No title provided',
   info: 'No info provided',
-  pictureUrl: 'https://via.placeholder.com/50',
+  pictureUrl: 'https://via.placeholder.com/250',
 };

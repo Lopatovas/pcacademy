@@ -19,6 +19,7 @@ class LoginUser extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div className={Style.bgUser}>
         <UserForm buttonText={config.LOGIN_BUTTON} onSubmit={this.handleSubmit}>
