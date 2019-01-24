@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.css';
+import ChampionshipTableCell from '../championshipTableCell';
 
 export default function ChampionshipList(props) {
   return (
@@ -27,15 +28,25 @@ export default function ChampionshipList(props) {
         </thead>
         <tbody>
           {props.teams.map(team => (
-            <tr key={team.position} className={Style.bottomLine}>
-              <td>{team.position}</td>
-              <td>{team.team.name}</td>
-              <td>{team.playedGames}</td>
-              <td>{team.won}</td>
-              <td>{team.lost}</td>
-              <td>{team.draw}</td>
-              <td>{team.goalDifference}</td>
-              <td>{team.points}</td>
+            <tr
+              key={team.position}
+              className={`${Style.bottomLine} ${Style.maxHeight}`}
+            >
+              <ChampionshipTableCell text={team.position} />
+              <td>
+                <img
+                  className={Style.imgScaling}
+                  src={team.team.crestUrl}
+                  alt="Logo"
+                />
+                {team.team.name}
+              </td>
+              <ChampionshipTableCell text={team.playedGames} />
+              <ChampionshipTableCell text={team.won} />
+              <ChampionshipTableCell text={team.lost} />
+              <ChampionshipTableCell text={team.draw} />
+              <ChampionshipTableCell text={team.goalDifference} />
+              <ChampionshipTableCell text={team.points} />
             </tr>
           ))}
         </tbody>

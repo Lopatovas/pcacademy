@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.css';
+import config from '../../utils/config';
 
 export default function Card(props) {
   return (
@@ -29,5 +30,5 @@ Card.propTypes = {
 Card.defaultProps = {
   title: 'No title provided',
   info: 'No info provided',
-  pictureUrl: 'https://via.placeholder.com/250',
+  pictureUrl: config.DEFAULT_PICTURE,
 };

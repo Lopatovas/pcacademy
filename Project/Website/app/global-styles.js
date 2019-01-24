@@ -15,7 +15,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   .container{
-    min-height: 85vh !important;
+    min-height: 90vh !important;
 }
 
   body {
