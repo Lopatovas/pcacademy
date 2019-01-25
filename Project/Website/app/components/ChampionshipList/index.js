@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Style from './style.css';
-import ChampionshipTableCell from '../championshipTableCell';
+import ChampionshipTableCell from '../ChampionshipTableCell';
 
 export default function ChampionshipList(props) {
   return (
@@ -26,11 +26,12 @@ export default function ChampionshipList(props) {
             <th>Points</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={Style.hover}>
           {props.teams.map(team => (
             <tr
               key={team.position}
               className={`${Style.bottomLine} ${Style.maxHeight}`}
+              onClick={() => props.handleTeamClick(team.team.id)}
             >
               <ChampionshipTableCell text={team.position} />
               <td>
@@ -58,6 +59,7 @@ export default function ChampionshipList(props) {
 ChampionshipList.propTypes = {
   tableName: PropTypes.string,
   teams: PropTypes.array.isRequired,
+  handleTeamClick: PropTypes.func.isRequired,
 };
 
 ChampionshipList.defaultProps = {

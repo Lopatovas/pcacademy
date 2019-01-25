@@ -22,3 +22,7 @@
 .maxHeight{
     height: 135%;
 }
+
+.hover :hover{
+    cursor: pointer;
+}

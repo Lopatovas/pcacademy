@@ -7,7 +7,7 @@ export default function championshipTableCell(props) {
 }
 
 championshipTableCell.propTypes = {
-  text: PropTypes.string,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 championshipTableCell.defaultProps = {

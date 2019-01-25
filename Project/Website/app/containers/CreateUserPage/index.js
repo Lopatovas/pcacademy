@@ -2,15 +2,12 @@ import React from 'react';
 import UserForm from 'components/Form';
 import InputField from 'components/InputField';
 import PropTypes from 'prop-types';
-import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import Style from './style.css';
 import config from '../../utils/config';
-import makeSelect from './selectors';
 import { pushUser } from './actions';
-import reducer from './reducer';
 import saga from './saga';
 
 class CreateUser extends React.Component {
@@ -43,8 +40,6 @@ CreateUser.propTypes = {
   pushUser: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = makeSelect();
-
 function mapDispatchToProps(dispatch) {
   return {
     pushUser: data => dispatch(pushUser(data)),
@@ -52,15 +47,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps,
 );
-
-const withReducer = injectReducer({ key: 'createUserPage', reducer });
 const withSaga = injectSaga({ key: 'createUserPage', saga });
 
 export default compose(
-  withReducer,
   withSaga,
   withConnect,
 )(CreateUser);

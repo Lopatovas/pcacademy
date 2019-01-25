@@ -19,6 +19,10 @@ class HomePage extends React.Component {
     this.props.getFixtures();
   }
 
+  handleClick = id => {
+    this.props.history.push(`teams/${id}`);
+  };
+
   render() {
     console.log(this.props);
     return (
@@ -32,7 +36,11 @@ class HomePage extends React.Component {
               You can find information about the participating teams and their performance."
             />
             <br />
-            <ChampionshipList tableName="Standings" teams={this.props.table} />
+            <ChampionshipList
+              tableName="Standings"
+              teams={this.props.table}
+              handleTeamClick={this.handleClick}
+            />
             <br />
           </div>
         </div>
@@ -45,6 +53,7 @@ HomePage.propTypes = {
   getTable: PropTypes.func.isRequired,
   getFixtures: PropTypes.func.isRequired,
   table: PropTypes.array.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = makeSelect();

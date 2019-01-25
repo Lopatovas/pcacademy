@@ -26,7 +26,10 @@ export default function TeamListItem(props) {
           </div>
           <div className="col">
             {props.teamInfo.map(info => (
-              <p key={createIndex()} className="text-white card-text">
+              <p
+                key={createIndex()}
+                className={`${Style.textSize} text-white card-text`}
+              >
                 {info}
               </p>
             ))}
@@ -53,6 +56,6 @@ TeamListItem.propTypes = {
 TeamListItem.defaultProps = {
   teamName: 'No name provided',
   teamInfo: [],
-  imgUrl: 'https://via.placeholder.com/250',
+  imgUrl: config.DEFAULT_PICTURE,
   id: -1,
 };

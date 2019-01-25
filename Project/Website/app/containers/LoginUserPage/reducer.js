@@ -8,7 +8,7 @@ export const initialState = fromJS({
 function loginPageReducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
-      return state.set('user', action.user);
+      return state.set('user', action.user.user.userName);
     default:
       return state;
   }
