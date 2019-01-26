@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectLoginPage = state => state.get('loginUserPage');
+const selectLoginPage = state => state.get('user');
 
 const makeSelectLoginPage = () =>
   createSelector(selectLoginPage, subState => subState.toJS());

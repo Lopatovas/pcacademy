@@ -18,7 +18,7 @@ import TeamPage from 'containers/TeamPage/Loadable';
 import PlayerPage from 'containers/PlayerPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
-import Header from 'components/Header';
+import Header from 'containers/Header';
 import Footer from 'components/Footer';
 
 import GlobalStyle from '../../global-styles';

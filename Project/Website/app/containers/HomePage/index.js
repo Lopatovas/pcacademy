@@ -8,7 +8,7 @@ import ChampionshipList from 'components/ChampionshipList';
 import PropTypes from 'prop-types';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { setFixtures, getTable, getFixtures } from './actions';
+import { getTable, getFixtures } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -62,7 +62,6 @@ function mapDispatchToProps(dispatch) {
   return {
     getTable: () => dispatch(getTable()),
     getFixtures: () => dispatch(getFixtures()),
-    setFixtures: fixtures => dispatch(setFixtures(fixtures)),
   };
 }
 

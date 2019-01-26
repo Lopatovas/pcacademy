@@ -1,25 +1,26 @@
 import React from 'react';
 import UserForm from 'components/Form';
 import InputField from 'components/InputField';
-import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import PropTypes from 'prop-types';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import config from '../../utils/config';
 import Style from './style.css';
-import makeSelect from './selectors';
 import { pushUser } from './actions';
-import reducer from './reducer';
 import saga from './saga';
+import makeSelect from './selectors';
 
 class LoginUser extends React.Component {
   handleSubmit = data => {
     this.props.pushUser(data);
   };
 
+  componentWillReceiveProps() {
+    this.props.history.push('');
+  }
+
   render() {
-    console.log(this.props);
     return (
       <div className={Style.bgUser}>
         <UserForm buttonText={config.LOGIN_BUTTON} onSubmit={this.handleSubmit}>
@@ -33,6 +34,7 @@ class LoginUser extends React.Component {
 
 LoginUser.propTypes = {
   pushUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
 
 const mapStateToProps = makeSelect();
@@ -48,11 +50,9 @@ const withConnect = connect(
   mapDispatchToProps,
 );
 
-const withReducer = injectReducer({ key: 'loginUserPage', reducer });
 const withSaga = injectSaga({ key: 'loginUserPage', saga });
 
 export default compose(
-  withReducer,
   withSaga,
   withConnect,
 )(LoginUser);

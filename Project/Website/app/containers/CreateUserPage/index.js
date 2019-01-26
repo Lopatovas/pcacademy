@@ -9,11 +9,16 @@ import Style from './style.css';
 import config from '../../utils/config';
 import { pushUser } from './actions';
 import saga from './saga';
+import makeSelect from './selectors';
 
 class CreateUser extends React.Component {
   handleSubmit = data => {
     this.props.pushUser(data);
   };
+
+  componentWillReceiveProps() {
+    this.props.history.push('');
+  }
 
   render() {
     return (
@@ -38,7 +43,10 @@ class CreateUser extends React.Component {
 
 CreateUser.propTypes = {
   pushUser: PropTypes.func.isRequired,
+  history: PropTypes.object.isRequired,
 };
+
+const mapStateToProps = makeSelect();
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -47,7 +55,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const withConnect = connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps,
 );
 const withSaga = injectSaga({ key: 'createUserPage', saga });
