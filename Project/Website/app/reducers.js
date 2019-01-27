@@ -5,6 +5,7 @@
 import { combineReducers } from 'redux-immutable';
 import { connectRouter } from 'connected-react-router/immutable';
 import { reducer as formReducer } from 'redux-form';
+import { reducer as toastrReducer } from 'react-redux-toastr';
 
 import history from 'utils/history';
 import languageProviderReducer from 'containers/LanguageProvider/reducer';
@@ -18,6 +19,7 @@ export default function createReducer(injectedReducers = {}) {
     language: languageProviderReducer,
     user: loginPageReducer,
     form: formReducer,
+    toastr: toastrReducer,
     ...injectedReducers,
   });
 

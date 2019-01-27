@@ -17,6 +17,7 @@ import TeamListPage from 'containers/TeamListPage/Loadable';
 import TeamPage from 'containers/TeamPage/Loadable';
 import PlayerPage from 'containers/PlayerPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import ReduxToastr from 'react-redux-toastr';
 
 import Header from 'containers/Header';
 import Footer from 'components/Footer';
@@ -38,6 +39,16 @@ export default function App() {
       </Switch>
       <Footer author="Edgaras Lopatovas" />
       <GlobalStyle />
+      <ReduxToastr
+        timeOut={2000}
+        newestOnTop={false}
+        preventDuplicates
+        position="top-right"
+        transitionIn="fadeIn"
+        transitionOut="fadeOut"
+        progressBar
+        closeOnToastrClick
+      />
     </div>
   );
 }
