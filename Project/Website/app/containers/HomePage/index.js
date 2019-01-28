@@ -6,9 +6,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import ChampionshipList from 'components/ChampionshipList';
 import PropTypes from 'prop-types';
+import FixtureList from 'components/FixtureList';
 import Style from './style.css';
 import makeSelect from './selectors';
-import { getTable, getFixtures } from './actions';
+import { getTable, getFixtures, setMatchday } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
@@ -19,12 +20,19 @@ class HomePage extends React.Component {
     this.props.getFixtures();
   }
 
-  handleClick = id => {
+  handleTeamListClick = id => {
     this.props.history.push(`teams/${id}`);
   };
 
+  handleMatchClick = id => {
+    this.props.history.push(`matches/${id}`);
+  };
+
+  handleSlider = event => {
+    this.props.setMatchday(event.target.value);
+  };
+
   render() {
-    console.log(this.props);
     return (
       <div>
         <div className={Style.bg}>
@@ -39,7 +47,14 @@ class HomePage extends React.Component {
             <ChampionshipList
               tableName="Standings"
               teams={this.props.table}
-              handleTeamClick={this.handleClick}
+              handleTeamClick={this.handleTeamListClick}
+            />
+            <FixtureList
+              tableName="Fixtures"
+              fixtures={this.props.fixtures}
+              matchday={this.props.matchday}
+              handleSlider={this.handleSlider}
+              handleMatchClick={this.handleMatchClick}
             />
             <br />
           </div>
@@ -54,6 +69,10 @@ HomePage.propTypes = {
   getFixtures: PropTypes.func.isRequired,
   table: PropTypes.array.isRequired,
   history: PropTypes.object.isRequired,
+  fixtures: PropTypes.array.isRequired,
+  setMatchday: PropTypes.func.isRequired,
+  matchday: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
 };
 
 const mapStateToProps = makeSelect();
@@ -62,6 +81,7 @@ function mapDispatchToProps(dispatch) {
   return {
     getTable: () => dispatch(getTable()),
     getFixtures: () => dispatch(getFixtures()),
+    setMatchday: matchday => dispatch(setMatchday(matchday)),
   };
 }
 

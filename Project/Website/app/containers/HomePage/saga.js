@@ -6,7 +6,7 @@ import * as tableService from '../../api/services/standings';
 
 function* getFixtures() {
   try {
-    const result = yield call(fixtureService.get);
+    const result = yield call(fixtureService.getFixtures);
     yield put({
       type: SET_FIXTURES,
       fixtures: result.data.matches,

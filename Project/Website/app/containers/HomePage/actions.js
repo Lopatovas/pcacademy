@@ -1,4 +1,10 @@
-import { SET_FIXTURES, GET_FIXTURES, SET_TABLE, GET_TABLE } from './constants';
+import {
+  SET_FIXTURES,
+  GET_FIXTURES,
+  SET_TABLE,
+  GET_TABLE,
+  SET_MATCHDAY,
+} from './constants';
 
 export function setFixtures(fixtures) {
   return {
@@ -23,5 +29,12 @@ export function setTable(table) {
 export function getTable() {
   return {
     type: GET_TABLE,
+  };
+}
+
+export function setMatchday(matchday) {
+  return {
+    type: SET_MATCHDAY,
+    matchday,
   };
 }

@@ -16,6 +16,7 @@ import CreatePage from 'containers/CreateUserPage/Loadable';
 import TeamListPage from 'containers/TeamListPage/Loadable';
 import TeamPage from 'containers/TeamPage/Loadable';
 import PlayerPage from 'containers/PlayerPage/Loadable';
+import MatchPage from 'containers/MatchPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import ReduxToastr from 'react-redux-toastr';
 
@@ -35,6 +36,7 @@ export default function App() {
         <Route exact path="/teams" component={TeamListPage} />
         <Route exact path="/teams/:name" component={TeamPage} />
         <Route exact path="/players/:id" component={PlayerPage} />
+        <Route exact path="/matches/:id" component={MatchPage} />
         <Route component={NotFoundPage} />
       </Switch>
       <Footer author="Edgaras Lopatovas" />
