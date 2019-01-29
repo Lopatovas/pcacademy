@@ -12,6 +12,7 @@ class Header extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,7 +26,7 @@ class Header extends React.Component {
               </Link>
             </li>
           </ul>
-          {this.props.user.length < 1 ? (
+          {this.props.user.user.length < 1 ? (
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link className="nav-link" to="/register">
@@ -42,7 +43,7 @@ class Header extends React.Component {
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
                 <span className="navbar-text text-white">{`Greetings ${
-                  this.props.user
+                  this.props.user.user
                 }`}</span>
               </li>
               <li className="nav-item">

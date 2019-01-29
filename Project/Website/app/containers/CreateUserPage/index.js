@@ -13,12 +13,8 @@ import makeSelect from './selectors';
 
 class CreateUser extends React.Component {
   handleSubmit = data => {
-    this.props.pushUser(data);
+    this.props.pushUser(data, this.props.history);
   };
-
-  componentWillReceiveProps() {
-    this.props.history.push('');
-  }
 
   render() {
     return (
@@ -50,7 +46,7 @@ const mapStateToProps = makeSelect();
 
 function mapDispatchToProps(dispatch) {
   return {
-    pushUser: data => dispatch(pushUser(data)),
+    pushUser: (data, history) => dispatch(pushUser(data, history)),
   };
 }
 

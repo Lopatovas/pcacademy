@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const player = require('./routes/player');
 const team = require('./routes/team');
+const post = require('./routes/post');
 const user = require('./routes/user');
 const passport = require('passport');
 const errorHandler = require('./errorHandler');
@@ -30,6 +31,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use('/players', passport.authenticate('jwt', {session: false}), player);
 app.use('/teams', passport.authenticate('jwt', {session: false}), team);
+app.use('/posts', passport.authenticate('jwt', {session: false}), post);
 app.use('/users', user);
 app.use(errorHandler);
 

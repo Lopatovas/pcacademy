@@ -1,17 +1,13 @@
-import { call, takeEvery, put } from 'redux-saga/effects';
+import { call, takeEvery } from 'redux-saga/effects';
 import { toastr } from 'react-redux-toastr';
 import { CREATE_USER } from './constants';
-import { SET_USER } from '../LoginUserPage/constants';
 import * as userService from '../../api/services/user';
 
 function* createUser(params) {
   try {
-    const result = yield call(userService.create, params.user);
-    toastr.success('Success!', `Welcome ${result.data.user.userName}`);
-    yield put({
-      type: SET_USER,
-      user: result.data,
-    });
+    yield call(userService.create, params.user);
+    toastr.success('Success!', `Now log in to get started.`);
+    yield params.history.push('/login');
   } catch (error) {
     if (error.response != null) {
       switch (error.response.status) {

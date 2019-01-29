@@ -18,17 +18,11 @@ export class MatchPage extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { fixture } = this.props;
     return (
       <div className={Style.bgMatch}>
         <div className="container">
-          {fixture.match !== undefined ? (
-            <MatchCard
-              homeTeam={fixture.match.homeTeam.name}
-              awayTeam={fixture.match.awayTeam.name}
-            />
-          ) : null}
+          {fixture.match !== undefined ? <MatchCard fixture={fixture} /> : null}
           <br />
         </div>
       </div>

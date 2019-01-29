@@ -13,7 +13,7 @@ async function createUser (req, userName, password, next) {
     try {
         const user = await UserModel.create({
             userName: userName,
-            email: req.body.email, 
+            email: req.body.email,
             password: password});
             next(null, user);
 
