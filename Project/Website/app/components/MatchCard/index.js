@@ -39,7 +39,7 @@ function MatchCard(props) {
             </div>
             <p>Referees:</p>
             {fixture.match.referees.map(referee => (
-              <p>{referee.name}</p>
+              <p key={referee.id}>{referee.name}</p>
             ))}
           </div>
         ) : null}

@@ -13,4 +13,5 @@ module.exports = {
   STATISTICS: 'Statistics',
   NOT_FOUND_TITLE: 'Oops!',
   NOT_FOUND_TEXT: 'It seems that your search got out of bounds...',
+  LEAVE_COMMENT: 'Leave a comment',
 };

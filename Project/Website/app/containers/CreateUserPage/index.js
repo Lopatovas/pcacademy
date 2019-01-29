@@ -22,6 +22,7 @@ class CreateUser extends React.Component {
         <UserForm
           buttonText={config.REGISTER_BUTTON}
           onSubmit={this.handleSubmit}
+          container="container"
         >
           <InputField label={config.USERNAME} name="userName" />
           <InputField label={config.EMAIL} name="email" type="email" />

@@ -4,10 +4,13 @@ const Schema = mongoose.Schema;
 
 let PostSchema = new Schema({
     userName: {
-        type: String, 
+        type: String,
         required: true },
     text: {
-        type: String, 
+        type: String,
+        required: true },
+    pageId: {
+        type: String,
         required: true },
 });
 

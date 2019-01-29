@@ -23,7 +23,11 @@ class LoginUser extends React.Component {
   render() {
     return (
       <div className={Style.bgUser}>
-        <UserForm buttonText={config.LOGIN_BUTTON} onSubmit={this.handleSubmit}>
+        <UserForm
+          buttonText={config.LOGIN_BUTTON}
+          onSubmit={this.handleSubmit}
+          container="container"
+        >
           <InputField label={config.USERNAME} name="userName" />
           <InputField label={config.PASSWORD} name="password" type="password" />
         </UserForm>

@@ -13,6 +13,30 @@ const GlobalStyle = createGlobalStyle`
     padding-left:5px;
     padding-bottom:5px;
   }
+  
+  .scrollable{
+    overflow:scroll;
+    max-height: 62rem;
+    overflow-x: hidden;
+}
+
+.scrollable ::-webkit-scrollbar{}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #868e96;
+  }
+  
+::-webkit-scrollbar-thumb {
+    background: #424242;
+  }
+  
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
 
   .container{
     min-height: 90vh !important;

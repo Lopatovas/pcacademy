@@ -6,6 +6,7 @@ exports.create = async function (request, response, next){
         let post = new Post({
             userName: request.body.userName,
             text: request.body.text,
+            pageId: request.body.pageId,
         });
     
         let result = await post.save();
@@ -28,7 +29,7 @@ exports.get = async function (request, response, next){
 
 exports.getById = async function (request, response, next){
     try{
-        let post = await Post.findById(request.params.id);
+        let post = await Post.find({pageId: request.params.id});
         if(post == null){
             next(boom.notFound());
         }

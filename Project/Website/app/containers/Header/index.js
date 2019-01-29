@@ -12,7 +12,6 @@ class Header extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div>
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -64,7 +63,7 @@ class Header extends React.Component {
 }
 
 Header.propTypes = {
-  user: PropTypes.string.isRequired,
+  user: PropTypes.object.isRequired,
   logoutUser: PropTypes.func.isRequired,
 };
 
